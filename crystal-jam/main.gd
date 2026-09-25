@@ -1,8 +1,8 @@
-extends Node2D
+extends Node3D
 
 
 func _input(event: InputEvent) -> void:
+		
+	#input handling
 	if event.is_action_pressed("left"):
-		$"head rotation point".rotate(0.1)
-	elif event.is_action_pressed("right"):
-		$"head rotation point".rotate(-0.1)
+		pass
