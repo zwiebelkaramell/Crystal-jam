@@ -5,7 +5,10 @@ var asphalt_scene = preload("res://asphalt.tscn")
 
 func _process(delta: float) -> void:
 	
+	is_player_hit()
 	roadmove()
+	
+	
 	
 	pass
 
@@ -25,11 +28,18 @@ func roadmove():
 	for n in asphalt_instances:
 		if n.global_position.x <= -200:
 			n.queue_free()
-			for x in asphalt_instances:
-				print(x)
-			print("break")
 			var asphalt = asphalt_scene.instantiate()
 			asphalt.position.x = (n.position.x+400)
 			road.add_child(asphalt)
 			
+func is_player_hit():
+	var player = $Player
+	
+	if player.position.z >= 1.0 || player.position.z <= -1.0:
+		$UI/HitMask.color += Color(0,0,0,0.01)
+	else:
+		$UI/HitMask.color -= Color(0,0,0,0.01)
 		
+	
+	
+	

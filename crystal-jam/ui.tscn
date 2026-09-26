@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://bxink627li2bk"]
+
+[ext_resource type="Script" uid="uid://qyqqkdjcs4k1" path="res://ui.gd" id="1_fyqef"]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=735735038]
+script = ExtResource("1_fyqef")
+
+[node name="HitMask" type="ColorRect" parent="." unique_id=677483904]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(1, 0, 0, 0)

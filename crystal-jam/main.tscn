@@ -3,6 +3,11 @@
 [ext_resource type="Script" uid="uid://csdvrd6mode6r" path="res://main.gd" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://d0qvop6te4jsu" path="res://asphalt.tscn" id="2_h2yge"]
 [ext_resource type="Script" uid="uid://cqfmhtqn20hx" path="res://player.gd" id="3_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://bxink627li2bk" path="res://ui.tscn" id="4_1bvp3"]
+
+[sub_resource type="Environment" id="Environment_h2yge"]
+fog_enabled = true
+fog_density = 0.0272
 
 [node name="Main" type="Node3D" unique_id=467007417]
 script = ExtResource("1_ig7tw")
@@ -19,7 +24,7 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0
 script = ExtResource("3_1bvp3")
 
 [node name="Camera3D" type="Camera3D" parent="Player" unique_id=1807718887]
+transform = Transform3D(0.99624306, 0.08522984, -0.015347141, -0.08485725, 0.99611634, 0.023481986, 0.017288918, -0.022091439, 0.99960643, 0, 0, 0)
+environment = SubResource("Environment_h2yge")
 
-[node name="UI" type="Node3D" parent="Player" unique_id=831562059]
-
-[node name="Dashboard" type="Sprite3D" parent="Player/UI" unique_id=2014719895]
+[node name="UI" parent="." unique_id=735735038 instance=ExtResource("4_1bvp3")]
