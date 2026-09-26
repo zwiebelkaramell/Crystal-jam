@@ -4,7 +4,7 @@ var right_tex = load("res://Assets/Art/crystal2.png")
 var rainbow_tex = load("res://Assets/Art/crystal3.png")
 
 var types = ["left", "right", "rainbow"]
-var type
+@export var type: String
 
 func _process(delta: float) -> void:
 	if type == "rainbow":

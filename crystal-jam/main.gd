@@ -8,6 +8,7 @@ var coin_velocity: Vector2
 @onready var cam = $Player/Camera3D
 @onready var tims = $UI/"Timmy's"
 @onready var coins = $UI/Coins
+@onready var rearview = $UI/ViewPort/SubViewport/Node3D/Camera3D
 
 
 func _ready() -> void:
@@ -15,7 +16,7 @@ func _ready() -> void:
 	#assign og position values to all ui elements for jiggle purposes
 	for n in $UI.get_children():
 		og.set(n.get_name(), n.get_position())
-
+		
 
 func _process(delta: float) -> void:
 	
@@ -72,6 +73,12 @@ func do_crystals():
 		crystal.position.z = (-rel_pos.z) + randf_range(-1,1)
 		crystal_parent.add_child(crystal)
 		
+		
+func do_monster():
+	
+	pass
+	
+	
 func UI_gubbins(delta):
 	
 	####### Wheel Vibration #################
@@ -89,9 +96,10 @@ func UI_gubbins(delta):
 	#########################################
 	
 	######## Camera Tilt ###################
-
 	
 	cam.set_rotation(Vector3(0,0,(move_toward(cam.get_rotation().z, 0, (0.2*ease(abs(cam.get_rotation().z),1.5))))))
+	rearview.set_rotation(Vector3(0, 90,(move_toward(rearview.get_rotation().z, 0, (0.2*ease(abs(rearview.get_rotation().z),1.5))))))
+	rearview.set_position($Player.get_position())
 	
 	########################################
 	
@@ -111,6 +119,18 @@ func UI_gubbins(delta):
 	#############################
 	
 func _on_player_hit(area: Area3D) -> void:
+	var object = area.get_parent()
+	match object.type:	
+		"left":
+			Global.health += 1
+			object.queue_free()
+		"right":
+			Global.health += 1
+			object.queue_free()
+		"rainbow":
+			Global.health += 1
+			object.queue_free()
+		
 	pass # Replace with function body.
 
 
@@ -118,6 +138,7 @@ func _on_player_left() -> void:
 	var wheel = $UI/Wheel
 	wheel.set_rotation(move_toward(wheel.get_rotation(), deg_to_rad(-90), 0.2))
 	cam.set_rotation(Vector3(0,0,(move_toward(cam.get_rotation().z, 0.5, 0.02))))
+	rearview.set_rotation(Vector3(0,90,(move_toward(rearview.get_rotation().z, -0.5, 0.02))))
 	tims.set_rotation(move_toward(tims.get_rotation(), -0.1, 0.3))
 	coin_velocity += Vector2(-10, (randf_range(-0.005, 0.005)+randf_range(-0.005, 0.005)))
 	pass
@@ -127,6 +148,7 @@ func _on_player_right() -> void:
 	var wheel = $UI/Wheel
 	wheel.set_rotation(move_toward(wheel.get_rotation(), deg_to_rad(90), 0.2))
 	cam.set_rotation(Vector3(0,0,(move_toward(cam.get_rotation().z, -0.5, 0.02))))
+	rearview.set_rotation(Vector3(0,90,(move_toward(rearview.get_rotation().z, 0.5, 0.02))))
 	tims.set_rotation(move_toward(tims.get_rotation(), 0.1, 0.3))
 	coin_velocity += Vector2(10, (randf_range(-0.005, 0.005)+randf_range(-0.005, 0.005)))
 	pass

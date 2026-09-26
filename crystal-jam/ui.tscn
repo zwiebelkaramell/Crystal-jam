@@ -3,9 +3,10 @@
 [ext_resource type="Script" uid="uid://qyqqkdjcs4k1" path="res://ui.gd" id="1_fyqef"]
 [ext_resource type="Texture2D" uid="uid://cdhjg2f7ai51v" path="res://Assets/Art/fixedsteeroingwheel.png" id="2_27fn8"]
 [ext_resource type="Texture2D" uid="uid://b5pwghuj84iwl" path="res://Assets/Art/empty dashboard.png" id="3_n5ude"]
-[ext_resource type="Texture2D" uid="uid://b6uqyvjiotsp1" path="res://Assets/Art/rierviewmierer.png" id="4_nltto"]
+[ext_resource type="Texture2D" uid="uid://pyh74ptwya44" path="res://Assets/Art/rierviewmirror.png" id="4_n5ude"]
 [ext_resource type="Texture2D" uid="uid://x71qhwgnvn8x" path="res://Assets/Art/cup.png" id="5_y4yjw"]
 [ext_resource type="Texture2D" uid="uid://cxp1uuqioy2td" path="res://Assets/Art/coins.png" id="6_waa4j"]
+[ext_resource type="Environment" uid="uid://q3j3t2wstnnv" path="res://fog.tres" id="7_y4yjw"]
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=735735038]
 script = ExtResource("1_fyqef")
@@ -28,7 +29,8 @@ texture = ExtResource("3_n5ude")
 centered = false
 
 [node name="Mirror" type="Sprite2D" parent="." unique_id=1604485367]
-texture = ExtResource("4_nltto")
+position = Vector2(-36, 0)
+texture = ExtResource("4_n5ude")
 centered = false
 
 [node name="Timmy\'s" type="Sprite2D" parent="." unique_id=1054949353]
@@ -40,3 +42,30 @@ offset = Vector2(-438, -646)
 [node name="Coins" type="Sprite2D" parent="." unique_id=2048031778]
 texture = ExtResource("6_waa4j")
 centered = false
+
+[node name="ViewPort" type="SubViewportContainer" parent="." unique_id=609984969]
+z_index = -10
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 241.0
+offset_right = 727.0
+offset_bottom = 132.0
+grow_horizontal = 2
+scale = Vector2(-1, 1)
+
+[node name="SubViewport" type="SubViewport" parent="ViewPort" unique_id=1587792345]
+handle_input_locally = false
+size = Vector2i(486, 128)
+render_target_update_mode = 4
+
+[node name="Node3D" type="Node3D" parent="ViewPort/SubViewport" unique_id=1504530614]
+transform = Transform3D(0.94551855, 0, -0.32556814, 0, 1, 0, 0.32556814, 0, 0.94551855, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="ViewPort/SubViewport/Node3D" unique_id=1583585454]
+transform = Transform3D(7.54979e-08, 0, 1, 0, 1, 0, -1, 0, 7.54979e-08, 0, 0.44396973, 0)
+environment = ExtResource("7_y4yjw")
+
+[node name="Label" type="Label" parent="." unique_id=1448048578]
+offset_right = 40.0
+offset_bottom = 23.0

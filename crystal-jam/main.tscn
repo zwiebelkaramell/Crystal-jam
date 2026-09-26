@@ -4,10 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://d0qvop6te4jsu" path="res://asphalt.tscn" id="2_h2yge"]
 [ext_resource type="Script" uid="uid://cqfmhtqn20hx" path="res://player.gd" id="3_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://bxink627li2bk" path="res://ui.tscn" id="4_1bvp3"]
-
-[sub_resource type="Environment" id="Environment_h2yge"]
-fog_enabled = true
-fog_density = 0.0272
+[ext_resource type="Environment" uid="uid://q3j3t2wstnnv" path="res://fog.tres" id="4_lquwl"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_c0ktc"]
 size = Vector3(0.5966797, 1.3320313, 1)
@@ -32,7 +29,7 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0
 script = ExtResource("3_1bvp3")
 
 [node name="Camera3D" type="Camera3D" parent="Player" unique_id=1807718887]
-environment = SubResource("Environment_h2yge")
+environment = ExtResource("4_lquwl")
 
 [node name="Hitbox" type="Area3D" parent="Player" unique_id=1043808098]
 
