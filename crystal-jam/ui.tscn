@@ -2,8 +2,10 @@
 
 [ext_resource type="Script" uid="uid://qyqqkdjcs4k1" path="res://ui.gd" id="1_fyqef"]
 [ext_resource type="Texture2D" uid="uid://cdhjg2f7ai51v" path="res://Assets/Art/fixedsteeroingwheel.png" id="2_27fn8"]
-[ext_resource type="Texture2D" uid="uid://ddv3s0eqmbt8u" path="res://Assets/Art/dash.png" id="3_27fn8"]
+[ext_resource type="Texture2D" uid="uid://b5pwghuj84iwl" path="res://Assets/Art/empty dashboard.png" id="3_n5ude"]
 [ext_resource type="Texture2D" uid="uid://b6uqyvjiotsp1" path="res://Assets/Art/rierviewmierer.png" id="4_nltto"]
+[ext_resource type="Texture2D" uid="uid://x71qhwgnvn8x" path="res://Assets/Art/cup.png" id="5_y4yjw"]
+[ext_resource type="Texture2D" uid="uid://cxp1uuqioy2td" path="res://Assets/Art/coins.png" id="6_waa4j"]
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=735735038]
 script = ExtResource("1_fyqef")
@@ -22,9 +24,19 @@ offset = Vector2(376, -164)
 
 [node name="Dash" type="Sprite2D" parent="." unique_id=1959801756]
 z_index = -1
-texture = ExtResource("3_27fn8")
+texture = ExtResource("3_n5ude")
 centered = false
 
 [node name="Mirror" type="Sprite2D" parent="." unique_id=1604485367]
 texture = ExtResource("4_nltto")
+centered = false
+
+[node name="Timmy\'s" type="Sprite2D" parent="." unique_id=1054949353]
+position = Vector2(438, 646)
+texture = ExtResource("5_y4yjw")
+centered = false
+offset = Vector2(-438, -646)
+
+[node name="Coins" type="Sprite2D" parent="." unique_id=2048031778]
+texture = ExtResource("6_waa4j")
 centered = false
