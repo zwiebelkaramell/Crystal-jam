@@ -2,6 +2,8 @@ extends Node3D
 var asphalt_scene = preload("res://asphalt.tscn")
 var object_scene = preload("res://object.tscn")
 var reset_wheel
+
+@onready var cam = $Player/Camera3D
 @onready var og_wheel_pos = $UI/Wheel.position
 
 
@@ -10,7 +12,7 @@ func _process(delta: float) -> void:
 	is_player_hit()
 	roadmove()
 	do_crystals()
-	UI_gubbins()
+	UI_gubbins(delta)
 	
 	pass
 
@@ -60,7 +62,7 @@ func do_crystals():
 		crystal.position.z = (-rel_pos.z) + randf_range(-1,1)
 		crystal_parent.add_child(crystal)
 		
-func UI_gubbins():
+func UI_gubbins(delta):
 	
 	####### Wheel Vibration #################
 	var wheel = $UI/Wheel
@@ -76,6 +78,15 @@ func UI_gubbins():
 			reset_wheel = false
 	#########################################
 	
+	######## Camera Tilt ###################
+
+	
+	cam.set_rotation(Vector3(0,0,(move_toward(cam.get_rotation().z, 0, (0.2*ease(abs(cam.get_rotation().z),1.5))))))
+	print(cam.get_rotation())
+	
+	########################################
+	
+	
 func _on_player_hit(area: Area3D) -> void:
 	pass # Replace with function body.
 
@@ -83,10 +94,12 @@ func _on_player_hit(area: Area3D) -> void:
 func _on_player_left() -> void:
 	var wheel = $UI/Wheel
 	wheel.set_rotation(move_toward(wheel.get_rotation(), deg_to_rad(-90), 0.2))
+	cam.set_rotation(Vector3(0,0,(move_toward(cam.get_rotation().z, 0.5, 0.02))))
 	pass
 
 
 func _on_player_right() -> void:
 	var wheel = $UI/Wheel
 	wheel.set_rotation(move_toward(wheel.get_rotation(), deg_to_rad(90), 0.2))
+	cam.set_rotation(Vector3(0,0,(move_toward(cam.get_rotation().z, -0.5, 0.02))))
 	pass
