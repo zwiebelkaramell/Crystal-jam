@@ -9,22 +9,38 @@
 fog_enabled = true
 fog_density = 0.0272
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_c0ktc"]
+size = Vector3(0.5966797, 1.3320313, 1)
+
 [node name="Main" type="Node3D" unique_id=467007417]
 script = ExtResource("1_ig7tw")
 
 [node name="Road" type="Node3D" parent="." unique_id=1780045598]
 
-[node name="Asphalt" parent="Road" unique_id=1182394214 instance=ExtResource("2_h2yge")]
+[node name="Asphalt" type="Node3D" parent="Road" unique_id=988316471]
 
-[node name="Asphalt2" parent="Road" unique_id=38993766 instance=ExtResource("2_h2yge")]
+[node name="Asphalt" parent="Road/Asphalt" unique_id=1182394214 instance=ExtResource("2_h2yge")]
+
+[node name="Asphalt2" parent="Road/Asphalt" unique_id=38993766 instance=ExtResource("2_h2yge")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200, 0, 0)
+
+[node name="Crystals" type="Node3D" parent="Road" unique_id=980539160]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.86, 0)
 
 [node name="Player" type="Node3D" parent="." unique_id=1158080293]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0.8601074, 0)
 script = ExtResource("3_1bvp3")
 
 [node name="Camera3D" type="Camera3D" parent="Player" unique_id=1807718887]
-transform = Transform3D(0.99624306, 0.08522984, -0.015347141, -0.08485725, 0.99611634, 0.023481986, 0.017288918, -0.022091439, 0.99960643, 0, 0, 0)
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 0, 0)
 environment = SubResource("Environment_h2yge")
 
+[node name="Hitbox" type="Area3D" parent="Player" unique_id=1043808098]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player/Hitbox" unique_id=1148758544]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.16601563, 0)
+shape = SubResource("BoxShape3D_c0ktc")
+
 [node name="UI" parent="." unique_id=735735038 instance=ExtResource("4_1bvp3")]
+
+[connection signal="area_entered" from="Player/Hitbox" to="." method="_on_player_hit"]
