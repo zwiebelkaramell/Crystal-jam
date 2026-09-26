@@ -1,9 +1,15 @@
 [gd_scene format=3 uid="uid://cxlr38ycsnn8k"]
 
 [ext_resource type="Script" uid="uid://csdvrd6mode6r" path="res://main.gd" id="1_ig7tw"]
+[ext_resource type="Texture2D" uid="uid://bm00emjrjk2ti" path="res://Assets/Art/body.png" id="2_h2yge"]
+[ext_resource type="Script" uid="uid://cqfmhtqn20hx" path="res://player.gd" id="3_1bvp3"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_dbps7"]
 size = Vector2(200, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c0ktc"]
+albedo_texture = ExtResource("2_h2yge")
+uv1_scale = Vector3(30, 2, 2)
 
 [node name="Main" type="Node3D" unique_id=467007417]
 script = ExtResource("1_ig7tw")
@@ -12,9 +18,11 @@ script = ExtResource("1_ig7tw")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Road" unique_id=636138487]
 mesh = SubResource("PlaneMesh_dbps7")
+surface_material_override/0 = SubResource("StandardMaterial3D_c0ktc")
 
 [node name="Player" type="Node3D" parent="." unique_id=1158080293]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0.8601074, 0)
+script = ExtResource("3_1bvp3")
 
 [node name="Camera3D" type="Camera3D" parent="Player" unique_id=1807718887]
 
