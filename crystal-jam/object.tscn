@@ -1,16 +1,18 @@
 [gd_scene format=3 uid="uid://d3e88o6mo7vcs"]
 
-[ext_resource type="Texture2D" uid="uid://dscxcrdp0cf43" path="res://Assets/Art/him.png" id="1_l2ofb"]
+[ext_resource type="Script" uid="uid://c7xul43p00yuk" path="res://object.gd" id="1_3xuqs"]
+[ext_resource type="Texture2D" uid="uid://dlne6iqm5vns" path="res://Assets/Art/crystal3.png" id="2_3xuqs"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_c0ktc"]
 
 [node name="Object" type="Node3D" unique_id=833870564]
+script = ExtResource("1_3xuqs")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=332630342]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1764466415]
 shape = SubResource("CapsuleShape3D_c0ktc")
 
-[node name="Sprite3D" type="Sprite3D" parent="." unique_id=779077756]
+[node name="sprite" type="Sprite3D" parent="." unique_id=779077756]
 billboard = 1
-texture = ExtResource("1_l2ofb")
+texture = ExtResource("2_3xuqs")

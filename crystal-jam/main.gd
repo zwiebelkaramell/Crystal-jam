@@ -61,6 +61,8 @@ func do_crystals():
 		crystal_parent.add_child(crystal)
 		
 func UI_gubbins():
+	
+	####### Wheel Vibration #################
 	var wheel = $UI/Wheel
 	wheel.set_rotation(move_toward(wheel.get_rotation(), deg_to_rad(0), 0.1))
 	if reset_wheel:
@@ -72,6 +74,7 @@ func UI_gubbins():
 			reset_wheel = true
 		else:
 			reset_wheel = false
+	#########################################
 	
 func _on_player_hit(area: Area3D) -> void:
 	pass # Replace with function body.
@@ -80,12 +83,10 @@ func _on_player_hit(area: Area3D) -> void:
 func _on_player_left() -> void:
 	var wheel = $UI/Wheel
 	wheel.set_rotation(move_toward(wheel.get_rotation(), deg_to_rad(-90), 0.2))
-	print(wheel.get_rotation())
 	pass
 
 
 func _on_player_right() -> void:
 	var wheel = $UI/Wheel
 	wheel.set_rotation(move_toward(wheel.get_rotation(), deg_to_rad(90), 0.2))
-	print(wheel.get_rotation())
 	pass
