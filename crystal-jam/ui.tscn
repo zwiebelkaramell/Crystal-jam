@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://bxink627li2bk"]
 
 [ext_resource type="Script" uid="uid://qyqqkdjcs4k1" path="res://ui.gd" id="1_fyqef"]
+[ext_resource type="Texture2D" uid="uid://cdhjg2f7ai51v" path="res://Assets/Art/fixedsteeroingwheel.png" id="2_27fn8"]
+[ext_resource type="Texture2D" uid="uid://ddv3s0eqmbt8u" path="res://Assets/Art/dash.png" id="3_27fn8"]
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=735735038]
 script = ExtResource("1_fyqef")
@@ -8,4 +10,16 @@ script = ExtResource("1_fyqef")
 [node name="HitMask" type="ColorRect" parent="." unique_id=677483904]
 offset_right = 1152.0
 offset_bottom = 648.0
+pivot_offset = Vector2(201, 490)
 color = Color(1, 0, 0, 0)
+
+[node name="Wheel" type="Sprite2D" parent="." unique_id=1182723099]
+position = Vector2(200, 516.8889)
+scale = Vector2(1, 0.8194444)
+texture = ExtResource("2_27fn8")
+offset = Vector2(376, -164)
+
+[node name="Dash" type="Sprite2D" parent="." unique_id=1959801756]
+z_index = -1
+texture = ExtResource("3_27fn8")
+centered = false

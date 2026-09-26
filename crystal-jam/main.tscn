@@ -43,4 +43,6 @@ shape = SubResource("BoxShape3D_c0ktc")
 
 [node name="UI" parent="." unique_id=735735038 instance=ExtResource("4_1bvp3")]
 
+[connection signal="left" from="Player" to="." method="_on_player_left"]
+[connection signal="right" from="Player" to="." method="_on_player_right"]
 [connection signal="area_entered" from="Player/Hitbox" to="." method="_on_player_hit"]

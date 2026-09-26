@@ -1,6 +1,8 @@
 extends Node3D
 var asphalt_scene = preload("res://asphalt.tscn")
 var object_scene = preload("res://object.tscn")
+var reset_wheel
+@onready var og_wheel_pos = $UI/Wheel.position
 
 
 func _process(delta: float) -> void:
@@ -8,7 +10,7 @@ func _process(delta: float) -> void:
 	is_player_hit()
 	roadmove()
 	do_crystals()
-	
+	UI_gubbins()
 	
 	pass
 
@@ -49,17 +51,41 @@ func do_crystals():
 	var rel_pos = $Road.get_position()
 	
 	for n in active_crystals:
-		print(n.global_position.x)
 		if n.global_position.x <= -200:
 			n.queue_free()
 			
 	if crystal_parent.get_children().size() < 3:
-		print("spawning")
 		var crystal = object_scene.instantiate()
 		crystal.position.x = (-rel_pos.x) + randf_range(spawn_distance, spawn_distance+800)
 		crystal.position.z = (-rel_pos.z) + randf_range(-1,1)
 		crystal_parent.add_child(crystal)
-
-
+		
+func UI_gubbins():
+	var wheel = $UI/Wheel
+	wheel.set_rotation(move_toward(wheel.get_rotation(), deg_to_rad(0), 0.1))
+	if reset_wheel:
+		wheel.set_position(og_wheel_pos)
+	if wheel.get_rotation() > 1 or wheel.get_rotation() < -1:
+		if Engine.get_frames_drawn() % 2 == 0:
+			var newpos = wheel.get_position() + Vector2(randf_range(-15,15), randf_range(-15,15))
+			wheel.set_position(newpos)
+			reset_wheel = true
+		else:
+			reset_wheel = false
+	
 func _on_player_hit(area: Area3D) -> void:
 	pass # Replace with function body.
+
+
+func _on_player_left() -> void:
+	var wheel = $UI/Wheel
+	wheel.set_rotation(move_toward(wheel.get_rotation(), deg_to_rad(-90), 0.2))
+	print(wheel.get_rotation())
+	pass
+
+
+func _on_player_right() -> void:
+	var wheel = $UI/Wheel
+	wheel.set_rotation(move_toward(wheel.get_rotation(), deg_to_rad(90), 0.2))
+	print(wheel.get_rotation())
+	pass
