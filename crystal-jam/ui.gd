@@ -25,6 +25,9 @@ var texts = [
 	["how much longer u gonna be?", "like 5 mins, lol", "like 5 years, lmao"],
 	["ordering, what drink u want?", "your favorite!", "red 40"],
 	["i hope youre worth the wait", "i am, trust", "scrollin tinder rn"],
+	["we should get mexican next time", "i'm up for anything", "we're kidnapping someone????"],
+	["jason- hot man 5 miles away", "not interested", "swipe right"],
+	["lisa- hot milfs in your neigbborhood", "maybe next time", "call lisa"],
 ]
 
 func _ready() -> void:
