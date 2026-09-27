@@ -6,8 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://cqwghe3pn25ud" path="res://Assets/Art/rightarm.png" id="3_ok7cu"]
 [ext_resource type="Texture2D" uid="uid://b7rdb1fecf2ql" path="res://Assets/Art/leftarm.png" id="4_irxef"]
 [ext_resource type="Texture2D" uid="uid://pyh74ptwya44" path="res://Assets/Art/rierviewmirror.png" id="4_n5ude"]
-[ext_resource type="Texture2D" uid="uid://x71qhwgnvn8x" path="res://Assets/Art/cup.png" id="5_y4yjw"]
 [ext_resource type="Texture2D" uid="uid://cxp1uuqioy2td" path="res://Assets/Art/coins.png" id="6_waa4j"]
+[ext_resource type="Texture2D" uid="uid://b3g4otv06ekn3" path="res://Assets/Art/timcup.png" id="7_ok7cu"]
 [ext_resource type="Environment" uid="uid://q3j3t2wstnnv" path="res://fog.tres" id="7_y4yjw"]
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=735735038]
@@ -48,10 +48,10 @@ texture = ExtResource("4_n5ude")
 centered = false
 
 [node name="Timmy\'s" type="Sprite2D" parent="." unique_id=1054949353]
-position = Vector2(438, 646)
-texture = ExtResource("5_y4yjw")
+position = Vector2(427, 673)
+texture = ExtResource("7_ok7cu")
 centered = false
-offset = Vector2(-438, -646)
+offset = Vector2(-427, -673)
 
 [node name="Coins" type="Sprite2D" parent="." unique_id=2048031778]
 texture = ExtResource("6_waa4j")
@@ -74,10 +74,9 @@ size = Vector2i(486, 128)
 render_target_update_mode = 4
 
 [node name="Node3D" type="Node3D" parent="ViewPort/SubViewport" unique_id=1504530614]
-transform = Transform3D(0.94551855, 0, -0.32556814, 0, 1, 0, 0.32556814, 0, 0.94551855, 0, 0, 0)
 
 [node name="Camera3D" type="Camera3D" parent="ViewPort/SubViewport/Node3D" unique_id=1583585454]
-transform = Transform3D(7.54979e-08, 0, 1, 0, 1, 0, -1, 0, 7.54979e-08, 0, 0.44396973, 0)
+transform = Transform3D(0.94551855, 0, -0.32556814, 0, 1, 0, 0.32556814, 0, 0.94551855, 0, 0, 0)
 environment = ExtResource("7_y4yjw")
 
 [node name="Label" type="Label" parent="." unique_id=1448048578]

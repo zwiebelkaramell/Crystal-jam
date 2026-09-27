@@ -3,8 +3,6 @@ extends Node3D
 signal left()
 signal right()
 
-var move_speed = 0.01
-
 func _process(delta: float) -> void:
 	
 	var movedir = Vector3.ZERO
@@ -17,6 +15,6 @@ func _process(delta: float) -> void:
 		movedir += Vector3(0,0,1)
 		right.emit()
 	
-	self.position += movedir * move_speed
+	self.position += movedir * Global.move_speed
 	pass
 	

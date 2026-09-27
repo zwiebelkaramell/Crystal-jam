@@ -9,7 +9,7 @@ var mon_knockback = 0
 @onready var cam = $Player/Camera3D
 @onready var tims = $UI/"Timmy's"
 @onready var coins = $UI/Coins
-@onready var rearview = $UI/ViewPort/SubViewport/Node3D/Camera3D
+@onready var rearview = $UI/ViewPort/SubViewport/Node3D
 @onready var baddie = $Baddie
 @onready var player = $Player
 
@@ -40,12 +40,12 @@ func roadmove():
 	var road = $Road
 	var asphalt_parent = $Road/Asphalt
 	var asphalt_instances = asphalt_parent.get_children()
-	var movespeed = 2
+	var movespeed = 1
 	
 	road.position.x -= movespeed
 	
 	for n in asphalt_instances:
-		if n.global_position.x <= -200:
+		if n.global_position.x <= -Global.road_l:
 			n.queue_free()
 			var asphalt = asphalt_scene.instantiate()
 			asphalt.position.x = (n.position.x+400)
@@ -53,7 +53,7 @@ func roadmove():
 			
 func is_player_hit():
 	
-	if player.position.z >= 1.0 || player.position.z <= -1.0:
+	if player.position.z >= Global.road_w/2 || player.position.z <= -Global.road_w/2:
 		$UI/HitMask.color += Color(0,0,0,0.01)
 	else:
 		$UI/HitMask.color -= Color(0,0,0,0.01)
@@ -66,13 +66,13 @@ func do_crystals():
 	var rel_pos = $Road.get_position()
 	
 	for n in active_crystals:
-		if n.global_position.x <= -200:
+		if n.global_position.x <= -Global.road_l:
 			n.queue_free()
 			
-	if crystal_parent.get_children().size() < 3:
+	if crystal_parent.get_children().size() < 7:
 		var crystal = object_scene.instantiate()
-		crystal.position.x = (-rel_pos.x) + randf_range(spawn_distance, spawn_distance+800)
-		crystal.position.z = (-rel_pos.z) + randf_range(-1,1)
+		crystal.position.x = (-rel_pos.x) + randf_range(spawn_distance, spawn_distance+(Global.road_l*4))
+		crystal.position.z = (-rel_pos.z) + randf_range(-Global.road_w/2,Global.road_w/2)
 		crystal_parent.add_child(crystal)
 		
 		
@@ -95,7 +95,7 @@ func do_monster():
 	if mon_knockback > 0:
 		mon_knockback -= 1
 		baddie.set_position(Vector3(
-			move_toward(baddie_pos.x, player_pos.x, -0.05),
+			move_toward(baddie_pos.x, player_pos.x+1, -0.05),
 			og["Baddie"].y,
 			baddie_pos.z
 		))
@@ -153,15 +153,15 @@ func _on_player_hit(area: Area3D) -> void:
 	match object.type:
 		"left":
 			Global.health += 1
-			mon_knockback += 2
+			mon_knockback += 20
 			object.queue_free()
 		"right":
 			Global.health += 1
-			mon_knockback += 2
+			mon_knockback += 20
 			object.queue_free()
 		"rainbow":
 			Global.health += 1
-			mon_knockback += 2
+			mon_knockback += 20
 			object.queue_free()
 		"baddie":
 			mon_knockback += 30

@@ -6,9 +6,16 @@ var rainbow_tex = load("res://Assets/Art/crystal3.png")
 var types = ["left", "right", "rainbow"]
 @export var type: String
 
+@onready var og = self.get_position()
+
 func _process(delta: float) -> void:
 	if type == "rainbow":
 		do_rainbow($sprite)
+	self.set_position(Vector3(
+		self.get_position().x,
+		(og.y + ((0.5*sin(Engine.get_frames_drawn()/8.0))*0.5)),
+		self.get_position().z
+	))
 
 func _ready() -> void:
 	self.type = types[randi_range(0, 2)]
