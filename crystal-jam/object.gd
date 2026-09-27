@@ -2,8 +2,11 @@ extends Node3D
 var left_tex = load("res://Assets/Art/crystal1.png")
 var right_tex = load("res://Assets/Art/crystal2.png")
 var rainbow_tex = load("res://Assets/Art/crystal3.png")
+var tree1_tex = load("res://Assets/Art/tree1.png")
+var tree2_tex = load("res://Assets/Art/TREE2.png")
+var tree3_tex = load("res://Assets/Art/TREE3.png")
 
-var types = ["left", "right", "rainbow"]
+var types = ["left", "right", "rainbow", "tree1", "tree2", "tree3"]
 @export var type: String
 
 @onready var og = self.get_position()
@@ -18,7 +21,7 @@ func _process(delta: float) -> void:
 	))
 
 func _ready() -> void:
-	self.type = types[randi_range(0, 2)]
+	
 
 	match type:
 		"left":
@@ -27,7 +30,20 @@ func _ready() -> void:
 			$sprite.set_texture(right_tex)
 		"rainbow":
 			$sprite.set_texture(rainbow_tex)
+		"tree1":
+			$sprite.set_texture(tree1_tex)
+		"tree2":
+			$sprite.set_texture(tree2_tex)
+		"tree3":
+			$sprite.set_texture(tree3_tex)
 
+
+
+func is_crystal():
+	self.type = types[randi_range(0, 2)]
+	
+func is_tree():
+	self.type = types[randi_range(3,5)]
 
 func do_rainbow(sprite: Node):
 	var frequency = .05

@@ -30,6 +30,7 @@ func _process(delta: float) -> void:
 	is_player_hit()
 	roadmove()
 	do_crystals()
+	do_trees()
 	do_monster()
 	UI_gubbins(delta)
 	
@@ -73,7 +74,28 @@ func is_player_hit():
 	else:
 		$UI/HitMask.color -= Color(0,0,0,0.01)
 		
-		
+
+func do_trees():
+	var spawn_dist = 200
+	var parent = $Road/Trees
+	var living_trees = parent.get_children()
+	var rel_pos = $Road.get_position()
+	
+	for n in living_trees:
+		if n.global_position.x <= -Global.road_l:
+			n.queue_free()
+	
+	if parent.get_children().size() < 20:
+		var tree = object_scene.instantiate()
+		tree.is_tree()
+		tree.position.x = (-rel_pos.x) + randf_range(spawn_dist, spawn_dist+(Global.road_l*4))
+		tree.position.y += 1
+		if parent.get_children().size() % 2 == 0:
+			tree.position.z = (-rel_pos.z) + randf_range((-Global.road_w/2), (-Global.road_w*2))
+		else:
+			tree.position.z = (-rel_pos.z) + randf_range((Global.road_w/2), (Global.road_w*2))
+		parent.add_child(tree)
+	pass
 
 func do_crystals():
 	var spawn_distance = 200
@@ -87,6 +109,7 @@ func do_crystals():
 			
 	if crystal_parent.get_children().size() < 7:
 		var crystal = object_scene.instantiate()
+		crystal.is_crystal()
 		crystal.position.x = (-rel_pos.x) + randf_range(spawn_distance, spawn_distance+(Global.road_l*4))
 		crystal.position.z = (-rel_pos.z) + randf_range(-Global.road_w/2,Global.road_w/2)
 		crystal_parent.add_child(crystal)
