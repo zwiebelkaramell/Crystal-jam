@@ -33,10 +33,17 @@ func _process(delta: float) -> void:
 	do_monster()
 	UI_gubbins(delta)
 	
+	if Global.health < 1:
+		die()
+	
 	pass
 
 
 func _input(event: InputEvent) -> void:
+	pass
+
+func die():
+	get_tree().change_scene_to_file("res://End.tscn")
 	pass
 
 
@@ -60,8 +67,12 @@ func is_player_hit():
 	
 	if player.position.z >= Global.road_w/2 || player.position.z <= -Global.road_w/2:
 		$UI/HitMask.color += Color(0,0,0,0.01)
+		if $UI/HitMask.color.a > 0.9:
+			$UI/HitMask.color = Color(1,0,0,0)
+			die()
 	else:
 		$UI/HitMask.color -= Color(0,0,0,0.01)
+		
 		
 
 func do_crystals():
@@ -157,11 +168,9 @@ func _on_player_hit(area: Area3D) -> void:
 	var object = area.get_parent()
 	match object.type:
 		"left":
-			Global.health += 1
 			mon_knockback += 25
 			object.queue_free()
 		"right":
-			Global.health += 1
 			mon_knockback += 25
 			object.queue_free()
 		"rainbow":
@@ -170,6 +179,7 @@ func _on_player_hit(area: Area3D) -> void:
 			object.queue_free()
 		"baddie":
 			mon_knockback += 30
+			$UI.take_hit()
 		_:
 			pass
 		

@@ -11,6 +11,7 @@ var no_repeat
 @onready var b1 = $TextController/Button1/Label
 @onready var b2 = $TextController/Button2/Label
 @onready var timer_bar = $TextController/Timer_UI
+@onready var health = $"Health Label"
 
 var texts = [
 # question, good response, bad response
@@ -31,11 +32,12 @@ func _ready() -> void:
 	pass
 
 func _process(delta: float) -> void:
-	$Label.text = str(Global.health)
 	if timer_bar.visible:
 		var time = Time.get_unix_time_from_system()
 		var time_diff = abs(start_time - time)
 		timer_bar.value = 100-(time_diff*33.334)
+		
+	health.text = "X " + str(Global.health) 
 	pass
 
 func take_hit():

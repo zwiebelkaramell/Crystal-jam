@@ -14,14 +14,17 @@
 [ext_resource type="Script" uid="uid://mfpnll558sbo" path="res://audio.gd" id="10_irxef"]
 [ext_resource type="Texture2D" uid="uid://gnrwx5xx7wfp" path="res://Assets/Art/unpressedbutton.png" id="12_cxd00"]
 [ext_resource type="Texture2D" uid="uid://redi43uruivw" path="res://Assets/Art/pressedbutton.png" id="13_etlur"]
+[ext_resource type="Texture2D" uid="uid://dlne6iqm5vns" path="res://Assets/Art/crystal3.png" id="15_etlur"]
 
 [sub_resource type="SystemFont" id="SystemFont_gs482"]
+subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_n5rqp"]
 font = SubResource("SystemFont_gs482")
 font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="SystemFont" id="SystemFont_etlur"]
+subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_cxd00"]
 font = SubResource("SystemFont_etlur")
@@ -32,6 +35,12 @@ font_color = Color(0, 0, 0, 1)
 font = SubResource("SystemFont_etlur")
 font_size = 12
 font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_c0ktc"]
+font_size = 35
+font_color = Color(0, 0, 0, 1)
+outline_size = 5
+outline_color = Color(1, 0.29803923, 1, 1)
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=735735038]
 script = ExtResource("1_fyqef")
@@ -118,10 +127,6 @@ render_target_update_mode = 4
 transform = Transform3D(0.94551855, 0, -0.32556814, 0, 1, 0, 0.32556814, 0, 0.94551855, 0, 0, 0)
 environment = ExtResource("7_y4yjw")
 
-[node name="Label" type="Label" parent="." unique_id=1448048578]
-offset_right = 40.0
-offset_bottom = 23.0
-
 [node name="TextController" type="Control" parent="." unique_id=783379967]
 layout_mode = 3
 anchors_preset = 0
@@ -194,6 +199,23 @@ show_percentage = false
 
 [node name="Audio" type="AudioStreamPlayer" parent="." unique_id=1455483512]
 script = ExtResource("10_irxef")
+
+[node name="Life Count" type="TextureRect" parent="." unique_id=1489570791]
+modulate = Color(1, 0, 0, 1)
+offset_left = 16.0
+offset_top = 10.0
+offset_right = 335.0
+offset_bottom = 331.0
+scale = Vector2(0.30116785, 0.3166073)
+texture = ExtResource("15_etlur")
+
+[node name="Health Label" type="Label" parent="." unique_id=364646232]
+offset_left = 111.0
+offset_top = 40.0
+offset_right = 333.4673
+offset_bottom = 169.49792
+text = "X 3"
+label_settings = SubResource("LabelSettings_c0ktc")
 
 [connection signal="pressed" from="TextController/Button1" to="." method="_on_button_1_pressed"]
 [connection signal="pressed" from="TextController/Button2" to="." method="_on_button_2_pressed"]

@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://cxagtksksdkeg"]
+
+[ext_resource type="Script" uid="uid://cu3wlcvilodr1" path="res://end.gd" id="1_lm0ep"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_c0ktc"]
+font_size = 103
+font_color = Color(1, 0, 0, 1)
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Control" type="Node" unique_id=538861193]
+script = ExtResource("1_lm0ep")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=932207752]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(1, 0.5372549, 1, 1)
+
+[node name="Node" type="Control" parent="." unique_id=184145281]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Label" type="Label" parent="Node" unique_id=2099862885]
+z_index = 1
+layout_mode = 0
+offset_left = 295.0
+offset_top = 115.0
+offset_right = 892.0
+offset_bottom = 257.0
+text = "UR DED LOL"
+label_settings = SubResource("LabelSettings_c0ktc")
+
+[node name="Button" type="Button" parent="Node" unique_id=1648215926]
+z_index = 10
+layout_mode = 0
+offset_left = 422.0
+offset_top = 451.0
+offset_right = 730.0
+offset_bottom = 559.0
+text = "Try Again?"
+
+[connection signal="pressed" from="Node/Button" to="." method="_on_button_pressed"]
