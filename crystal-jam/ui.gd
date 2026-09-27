@@ -20,6 +20,8 @@ var texts = [
 	["is this the wrong mcdonalds?", "no, be right there", "ur a mcdumbass XD"],
 	["you gonna run, honeybun?", "running to meet you boo <3", "bet ur \"buns\", bozo"],
 	["how much longer u gonna be?", "like 5 mins, lol", "like 5 years, lmao"],
+	["ordering, what drink u want?", "your favorite!", "red 40"],
+	["i hope youre worth the wait", "i am, trust", "scrollin tinder rn"],
 ]
 
 func _ready() -> void:
