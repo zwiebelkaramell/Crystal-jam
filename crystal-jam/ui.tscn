@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cxp1uuqioy2td" path="res://Assets/Art/coins.png" id="6_waa4j"]
 [ext_resource type="Texture2D" uid="uid://b3g4otv06ekn3" path="res://Assets/Art/timcup.png" id="7_ok7cu"]
 [ext_resource type="Environment" uid="uid://q3j3t2wstnnv" path="res://fog.tres" id="7_y4yjw"]
+[ext_resource type="Script" uid="uid://mfpnll558sbo" path="res://audio.gd" id="10_irxef"]
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=735735038]
 script = ExtResource("1_fyqef")
@@ -123,6 +124,9 @@ offset_top = -8.0
 offset_right = 201.0
 offset_bottom = 2.0
 show_percentage = false
+
+[node name="Audio" type="AudioStreamPlayer" parent="." unique_id=1455483512]
+script = ExtResource("10_irxef")
 
 [connection signal="pressed" from="TextController/Button1" to="." method="_on_button_1_pressed"]
 [connection signal="pressed" from="TextController/Button2" to="." method="_on_button_2_pressed"]
