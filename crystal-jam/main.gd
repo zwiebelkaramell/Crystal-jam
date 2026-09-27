@@ -151,12 +151,15 @@ func UI_gubbins(delta):
 	if reset_wheel:
 		wheel.set_position(og["Wheel"])
 	if wheel.get_rotation() > 1 or wheel.get_rotation() < -1:
+		if !$SFX/Tires.playing: $SFX/Tires.play()
 		if Engine.get_frames_drawn() % 2 == 0:
 			var newpos = wheel.get_position() + Vector2(randf_range(-15,15), randf_range(-15,15))
 			wheel.set_position(newpos)
 			reset_wheel = true
 		else:
 			reset_wheel = false
+	else:
+		$SFX/Tires.stop()
 	
 	var rhand = $UI/Wheel/Hand_R
 	var lhand = $UI/Wheel/Hand_L
@@ -193,13 +196,16 @@ func _on_player_hit(area: Area3D) -> void:
 		"left":
 			mon_knockback += 25
 			object.queue_free()
+			$UI.sfx("crystal_get.ogg")
 		"right":
 			mon_knockback += 25
 			object.queue_free()
+			$UI.sfx("crystal_get.ogg")
 		"rainbow":
 			Global.health += 1
 			mon_knockback += 25
 			object.queue_free()
+			$UI.sfx("crystal_get.ogg")
 		"baddie":
 			mon_knockback += 30
 			$UI.take_hit()

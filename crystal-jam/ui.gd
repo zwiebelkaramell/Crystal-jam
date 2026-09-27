@@ -15,6 +15,7 @@ signal finger()
 @onready var timer_bar = $TextController/Timer_UI
 @onready var health = $"Health Label"
 @onready var merc_timer = $Warning/Timer
+@onready var sfx_crystal = load("res://Assets/Audio/crystal_get.ogg")
 
 var texts = [
 # question, good response, bad response
@@ -37,6 +38,8 @@ func _ready() -> void:
 		hitsounds.append(load(path))
 	$Warning.play()
 	merc_timer.start(3)
+	$Audio.set_stream(load("res://Assets/Audio/warning.ogg"))
+	$Audio.play()
 	pass
 
 func _process(delta: float) -> void:
@@ -59,6 +62,11 @@ func _input(event: InputEvent) -> void:
 		$Wheel/Hand_R.visible = true
 		$Finger.visible = false
 		pass
+
+func sfx(name: String):
+	var sound = load("res://Assets/Audio/%s" % name)
+	$Audio.set_stream(sound)
+	$Audio.play()
 
 func take_hit():
 	$HitMask.set_color(Color(1,0,0,0.4))

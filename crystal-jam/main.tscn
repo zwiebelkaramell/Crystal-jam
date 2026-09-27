@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://c71lrf4o54y7w" path="res://Assets/Art/boogerbeanstand.png" id="8_efxa6"]
 [ext_resource type="Texture2D" uid="uid://bnc0goa0mh4rh" path="res://Assets/Art/boogerbean2.png" id="9_dg77c"]
 [ext_resource type="Texture2D" uid="uid://bw6xycfl7icap" path="res://Assets/Art/boogerbean3closedeye.png" id="10_ycdy4"]
+[ext_resource type="Script" uid="uid://b4a34tdiqrxxm" path="res://sfx.gd" id="11_dg77c"]
+[ext_resource type="AudioStream" uid="uid://b06nmka0ib1rb" path="res://Assets/Audio/car skiii.ogg" id="12_ycdy4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_c0ktc"]
 size = Vector3(0.5966797, 1.3320313, 0.6534424)
@@ -103,6 +105,14 @@ frame_progress = 0.72225356
 wait_time = 5.0
 
 [node name="ResponseTime" type="Timer" parent="Timers" unique_id=1480593534]
+
+[node name="SFX" type="Node" parent="." unique_id=719341170]
+script = ExtResource("11_dg77c")
+
+[node name="Tires" type="AudioStreamPlayer" parent="SFX" unique_id=942894847]
+stream = ExtResource("12_ycdy4")
+pitch_scale = 0.58
+max_polyphony = 8
 
 [connection signal="left" from="Player" to="." method="_on_player_left"]
 [connection signal="right" from="Player" to="." method="_on_player_right"]

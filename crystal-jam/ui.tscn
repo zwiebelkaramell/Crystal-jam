@@ -241,6 +241,7 @@ offset_bottom = 6.0
 show_percentage = false
 
 [node name="Audio" type="AudioStreamPlayer" parent="." unique_id=1455483512]
+max_polyphony = 8
 script = ExtResource("10_irxef")
 
 [node name="Life Count" type="TextureRect" parent="." unique_id=1489570791]
