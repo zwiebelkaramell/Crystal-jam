@@ -5,9 +5,14 @@
 [ext_resource type="Script" uid="uid://cqfmhtqn20hx" path="res://player.gd" id="3_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://bxink627li2bk" path="res://ui.tscn" id="4_1bvp3"]
 [ext_resource type="Environment" uid="uid://q3j3t2wstnnv" path="res://fog.tres" id="4_lquwl"]
+[ext_resource type="Texture2D" uid="uid://dscxcrdp0cf43" path="res://Assets/Art/him.png" id="6_7mycd"]
+[ext_resource type="Script" uid="uid://bfoojv5g2qpye" path="res://baddie.gd" id="6_272bh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_c0ktc"]
-size = Vector3(0.5966797, 1.3320313, 1)
+size = Vector3(0.5966797, 1.3320313, 0.6534424)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_c0ktc"]
+radius = 0.14697266
 
 [node name="Main" type="Node3D" unique_id=467007417]
 script = ExtResource("1_ig7tw")
@@ -34,10 +39,23 @@ environment = ExtResource("4_lquwl")
 [node name="Hitbox" type="Area3D" parent="Player" unique_id=1043808098]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player/Hitbox" unique_id=1148758544]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.16601563, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.881784e-16, -0.16601563, -0.17327881)
 shape = SubResource("BoxShape3D_c0ktc")
 
 [node name="UI" parent="." unique_id=735735038 instance=ExtResource("4_1bvp3")]
+
+[node name="Baddie" type="Node3D" parent="." unique_id=654694315]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.071625, 0.78996277, 0)
+script = ExtResource("6_272bh")
+
+[node name="Area3D" type="Area3D" parent="Baddie" unique_id=1276572407]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Baddie/Area3D" unique_id=2028641804]
+shape = SubResource("CapsuleShape3D_c0ktc")
+
+[node name="Sprite3D" type="Sprite3D" parent="Baddie" unique_id=631972964]
+billboard = 1
+texture = ExtResource("6_7mycd")
 
 [connection signal="left" from="Player" to="." method="_on_player_left"]
 [connection signal="right" from="Player" to="." method="_on_player_right"]

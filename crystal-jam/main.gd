@@ -4,25 +4,28 @@ var object_scene = preload("res://object.tscn")
 var og = {}
 var reset_wheel: bool
 var coin_velocity: Vector2
+var mon_knockback = 0
 
 @onready var cam = $Player/Camera3D
 @onready var tims = $UI/"Timmy's"
 @onready var coins = $UI/Coins
 @onready var rearview = $UI/ViewPort/SubViewport/Node3D/Camera3D
-
+@onready var baddie = $Baddie
+@onready var player = $Player
 
 func _ready() -> void:
 	
 	#assign og position values to all ui elements for jiggle purposes
 	for n in $UI.get_children():
 		og.set(n.get_name(), n.get_position())
-		
+	og.set(baddie.get_name(), baddie.get_position())
 
 func _process(delta: float) -> void:
 	
 	is_player_hit()
 	roadmove()
 	do_crystals()
+	do_monster()
 	UI_gubbins(delta)
 	
 	pass
@@ -49,7 +52,6 @@ func roadmove():
 			asphalt_parent.add_child(asphalt)
 			
 func is_player_hit():
-	var player = $Player
 	
 	if player.position.z >= 1.0 || player.position.z <= -1.0:
 		$UI/HitMask.color += Color(0,0,0,0.01)
@@ -76,6 +78,29 @@ func do_crystals():
 		
 func do_monster():
 	
+	# movement #
+	var player_pos = player.get_position()
+	var baddie_pos = baddie.get_position()
+	
+	baddie.set_position(Vector3(
+	move_toward(baddie_pos.x, player_pos.x, 0.01),
+	og["Baddie"].y,
+	move_toward(baddie_pos.z, player_pos.z, 0.01)
+	))
+	############
+	
+	# getting hit #
+	baddie_pos = baddie.get_position()
+	
+	if mon_knockback > 0:
+		mon_knockback -= 1
+		baddie.set_position(Vector3(
+			move_toward(baddie_pos.x, player_pos.x, -0.05),
+			og["Baddie"].y,
+			baddie_pos.z
+		))
+	
+	
 	pass
 	
 	
@@ -93,6 +118,11 @@ func UI_gubbins(delta):
 			reset_wheel = true
 		else:
 			reset_wheel = false
+	
+	var rhand = $UI/Wheel/Hand_R
+	var lhand = $UI/Wheel/Hand_L
+	rhand.set_rotation(move_toward(-wheel.get_rotation(), deg_to_rad(0), 0.2))
+	lhand.set_rotation(move_toward(-wheel.get_rotation(), deg_to_rad(0), 0.2))
 	#########################################
 	
 	######## Camera Tilt ###################
@@ -120,16 +150,23 @@ func UI_gubbins(delta):
 	
 func _on_player_hit(area: Area3D) -> void:
 	var object = area.get_parent()
-	match object.type:	
+	match object.type:
 		"left":
 			Global.health += 1
+			mon_knockback += 2
 			object.queue_free()
 		"right":
 			Global.health += 1
+			mon_knockback += 2
 			object.queue_free()
 		"rainbow":
 			Global.health += 1
+			mon_knockback += 2
 			object.queue_free()
+		"baddie":
+			mon_knockback += 30
+		_:
+			pass
 		
 	pass # Replace with function body.
 

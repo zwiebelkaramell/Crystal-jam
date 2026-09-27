@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://qyqqkdjcs4k1" path="res://ui.gd" id="1_fyqef"]
 [ext_resource type="Texture2D" uid="uid://cdhjg2f7ai51v" path="res://Assets/Art/fixedsteeroingwheel.png" id="2_27fn8"]
 [ext_resource type="Texture2D" uid="uid://b5pwghuj84iwl" path="res://Assets/Art/empty dashboard.png" id="3_n5ude"]
+[ext_resource type="Texture2D" uid="uid://cqwghe3pn25ud" path="res://Assets/Art/rightarm.png" id="3_ok7cu"]
+[ext_resource type="Texture2D" uid="uid://b7rdb1fecf2ql" path="res://Assets/Art/leftarm.png" id="4_irxef"]
 [ext_resource type="Texture2D" uid="uid://pyh74ptwya44" path="res://Assets/Art/rierviewmirror.png" id="4_n5ude"]
 [ext_resource type="Texture2D" uid="uid://x71qhwgnvn8x" path="res://Assets/Art/cup.png" id="5_y4yjw"]
 [ext_resource type="Texture2D" uid="uid://cxp1uuqioy2td" path="res://Assets/Art/coins.png" id="6_waa4j"]
@@ -22,6 +24,18 @@ position = Vector2(200, 516.8889)
 scale = Vector2(1, 0.8194444)
 texture = ExtResource("2_27fn8")
 offset = Vector2(376, -164)
+
+[node name="Hand_R" type="Sprite2D" parent="Wheel" unique_id=997670042]
+z_index = 4
+position = Vector2(96, -47.457626)
+texture = ExtResource("3_ok7cu")
+offset = Vector2(260, 87.86438)
+
+[node name="Hand_L" type="Sprite2D" parent="Wheel" unique_id=566909586]
+z_index = 4
+position = Vector2(-88, -46.237343)
+texture = ExtResource("4_irxef")
+offset = Vector2(355, 93.966125)
 
 [node name="Dash" type="Sprite2D" parent="." unique_id=1959801756]
 z_index = -1
