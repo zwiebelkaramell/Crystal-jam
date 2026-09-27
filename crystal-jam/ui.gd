@@ -14,6 +14,7 @@ signal finger()
 @onready var b2 = $TextController/Button2/Label
 @onready var timer_bar = $TextController/Timer_UI
 @onready var health = $"Health Label"
+@onready var merc_timer = $Warning/Timer
 
 var texts = [
 # question, good response, bad response
@@ -34,6 +35,8 @@ func _ready() -> void:
 	for i in range(1,7):
 		var path = "res://Assets/Audio/hit_" + str(i) + ".ogg"
 		hitsounds.append(load(path))
+	$Warning.play()
+	merc_timer.start(3)
 	pass
 
 func _process(delta: float) -> void:
@@ -122,4 +125,9 @@ func _on_button_2_pressed() -> void:
 		no_fail()
 	else:
 		fail()
+	pass
+
+
+func _on_timer_timeout() -> void:
+	$Warning.visible = false
 	pass

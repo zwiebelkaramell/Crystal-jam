@@ -204,6 +204,8 @@ func _on_player_hit(area: Area3D) -> void:
 			mon_knockback += 30
 			$UI.take_hit()
 		_:
+			object.queue_free()
+			$UI.take_hit()
 			pass
 		
 	pass # Replace with function body.

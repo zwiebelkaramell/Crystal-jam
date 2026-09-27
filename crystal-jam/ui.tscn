@@ -2,8 +2,10 @@
 
 [ext_resource type="Script" uid="uid://qyqqkdjcs4k1" path="res://ui.gd" id="1_fyqef"]
 [ext_resource type="Texture2D" uid="uid://cdhjg2f7ai51v" path="res://Assets/Art/fixedsteeroingwheel.png" id="2_27fn8"]
+[ext_resource type="Texture2D" uid="uid://ci18275jwops4" path="res://Assets/Art/mirk!redalltogether.png" id="2_b2p7n"]
 [ext_resource type="Texture2D" uid="uid://b5pwghuj84iwl" path="res://Assets/Art/empty dashboard.png" id="3_n5ude"]
 [ext_resource type="Texture2D" uid="uid://cqwghe3pn25ud" path="res://Assets/Art/rightarm.png" id="3_ok7cu"]
+[ext_resource type="Texture2D" uid="uid://upo5kxf71tjq" path="res://Assets/Art/mirk!yellowalltogether.png" id="3_vkygq"]
 [ext_resource type="Texture2D" uid="uid://b7rdb1fecf2ql" path="res://Assets/Art/leftarm.png" id="4_irxef"]
 [ext_resource type="Texture2D" uid="uid://pyh74ptwya44" path="res://Assets/Art/rierviewmirror.png" id="4_n5ude"]
 [ext_resource type="Texture2D" uid="uid://cxp1uuqioy2td" path="res://Assets/Art/coins.png" id="6_waa4j"]
@@ -17,6 +19,20 @@
 [ext_resource type="Texture2D" uid="uid://gnrwx5xx7wfp" path="res://Assets/Art/unpressedbutton.png" id="12_cxd00"]
 [ext_resource type="Texture2D" uid="uid://redi43uruivw" path="res://Assets/Art/pressedbutton.png" id="13_etlur"]
 [ext_resource type="Texture2D" uid="uid://dlne6iqm5vns" path="res://Assets/Art/crystal3.png" id="15_etlur"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c0ktc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_b2p7n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_vkygq")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="SystemFont" id="SystemFont_gs482"]
 subpixel_positioning = 0
@@ -46,6 +62,15 @@ outline_color = Color(1, 0.29803923, 1, 1)
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=735735038]
 script = ExtResource("1_fyqef")
+
+[node name="Warning" type="AnimatedSprite2D" parent="." unique_id=1900092967]
+z_index = 4
+position = Vector2(577, 321)
+sprite_frames = SubResource("SpriteFrames_c0ktc")
+frame = 1
+frame_progress = 0.1984873
+
+[node name="Timer" type="Timer" parent="Warning" unique_id=344392807]
 
 [node name="HitMask" type="ColorRect" parent="." unique_id=677483904]
 offset_right = 1152.0
@@ -235,5 +260,6 @@ offset_bottom = 169.49792
 text = "X 3"
 label_settings = SubResource("LabelSettings_c0ktc")
 
+[connection signal="timeout" from="Warning/Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="TextController/Button1" to="." method="_on_button_1_pressed"]
 [connection signal="pressed" from="TextController/Button2" to="." method="_on_button_2_pressed"]
