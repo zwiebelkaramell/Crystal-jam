@@ -48,7 +48,7 @@ texture = ExtResource("4_n5ude")
 centered = false
 
 [node name="Timmy\'s" type="Sprite2D" parent="." unique_id=1054949353]
-position = Vector2(427, 673)
+position = Vector2(422, 696)
 texture = ExtResource("7_ok7cu")
 centered = false
 offset = Vector2(-427, -673)
