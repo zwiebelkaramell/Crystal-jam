@@ -171,6 +171,7 @@ offset_left = 74.0
 offset_top = 10.0
 offset_right = 206.0
 offset_bottom = 62.0
+focus_mode = 0
 texture_normal = ExtResource("12_cxd00")
 texture_pressed = ExtResource("13_etlur")
 
@@ -190,6 +191,7 @@ offset_left = 74.0
 offset_top = 76.0
 offset_right = 206.0
 offset_bottom = 128.0
+focus_mode = 0
 texture_normal = ExtResource("12_cxd00")
 texture_pressed = ExtResource("13_etlur")
 
