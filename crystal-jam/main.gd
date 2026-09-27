@@ -17,7 +17,8 @@ func _ready() -> void:
 	
 	#assign og position values to all ui elements for jiggle purposes
 	for n in $UI.get_children():
-		og.set(n.get_name(), n.get_position())
+		if n.has_method("get_position"):
+			og.set(n.get_name(), n.get_position())
 	og.set(baddie.get_name(), baddie.get_position())
 	
 	$Timers/TextFreq.start(5)

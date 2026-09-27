@@ -3,7 +3,9 @@ extends CanvasLayer
 var start_time
 var order
 var answered
-
+var hitsounds = []
+var no_repeat
+	
 @onready var og_wheel_pos = $Wheel.get_position()
 @onready var phone_label = $TextController/HisMsg
 @onready var b1 = $TextController/Button1
@@ -21,7 +23,9 @@ var texts = [
 ]
 
 func _ready() -> void:
-	
+	for i in range(1,7):
+		var path = "res://Assets/Audio/hit_" + str(i) + ".ogg"
+		hitsounds.append(load(path))
 	pass
 
 func _process(delta: float) -> void:
@@ -34,6 +38,14 @@ func _process(delta: float) -> void:
 
 func take_hit():
 	$HitMask.set_color(Color(1,0,0,0.4))
+	var roll = randi_range(0,(hitsounds.size()-1))
+	if roll == no_repeat:
+		roll = randi_range(0, hitsounds.size()-2)
+		if roll >= no_repeat:
+			roll += 1
+	no_repeat = roll
+	$Audio.set_stream(hitsounds[roll])
+	$Audio.play()
 	Global.health -= 1
 
 func do_text():
