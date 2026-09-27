@@ -9,9 +9,11 @@
 [ext_resource type="Texture2D" uid="uid://cxp1uuqioy2td" path="res://Assets/Art/coins.png" id="6_waa4j"]
 [ext_resource type="Texture2D" uid="uid://b3g4otv06ekn3" path="res://Assets/Art/timcup.png" id="7_ok7cu"]
 [ext_resource type="Environment" uid="uid://q3j3t2wstnnv" path="res://fog.tres" id="7_y4yjw"]
+[ext_resource type="Texture2D" uid="uid://2hriai6mla7d" path="res://Assets/Art/middlefinger.png" id="9_7rqds"]
 [ext_resource type="Texture2D" uid="uid://bgp04g4psm3pt" path="res://Assets/Art/fixed phone.png" id="9_n5rqp"]
 [ext_resource type="Texture2D" uid="uid://dmripd64x3h8j" path="res://Assets/Art/phone stand.png" id="10_gs482"]
 [ext_resource type="Script" uid="uid://mfpnll558sbo" path="res://audio.gd" id="10_irxef"]
+[ext_resource type="Texture2D" uid="uid://f5ny8iftstev" path="res://Assets/Art/arm.png" id="10_nvb2n"]
 [ext_resource type="Texture2D" uid="uid://gnrwx5xx7wfp" path="res://Assets/Art/unpressedbutton.png" id="12_cxd00"]
 [ext_resource type="Texture2D" uid="uid://redi43uruivw" path="res://Assets/Art/pressedbutton.png" id="13_etlur"]
 [ext_resource type="Texture2D" uid="uid://dlne6iqm5vns" path="res://Assets/Art/crystal3.png" id="15_etlur"]
@@ -88,6 +90,20 @@ offset = Vector2(-427, -673)
 [node name="Coins" type="Sprite2D" parent="." unique_id=2048031778]
 texture = ExtResource("6_waa4j")
 centered = false
+
+[node name="Finger" type="Sprite2D" parent="." unique_id=677142878]
+visible = false
+z_index = 8
+position = Vector2(419, 406)
+texture = ExtResource("9_7rqds")
+offset = Vector2(-519, 166)
+
+[node name="Arm" type="Sprite2D" parent="Finger" unique_id=1932951546]
+z_index = -1
+position = Vector2(-79.805084, 489.21396)
+rotation = -2.2286012
+texture = ExtResource("10_nvb2n")
+offset = Vector2(-19.640625, -466.5562)
 
 [node name="Phone" type="Sprite2D" parent="." unique_id=1178825924]
 position = Vector2(470, 319)

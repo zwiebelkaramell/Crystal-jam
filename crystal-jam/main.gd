@@ -212,3 +212,8 @@ func _on_text_freq_timeout(timer: Timer) -> void:
 	$Timers/ResponseTime.start(3)
 	
 	pass
+
+
+func _on_ui_finger() -> void:
+	mon_knockback += 1
+	pass # Replace with function body.

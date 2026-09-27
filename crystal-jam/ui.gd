@@ -5,6 +5,8 @@ var order
 var answered
 var hitsounds = []
 var no_repeat
+
+signal finger()
 	
 @onready var og_wheel_pos = $Wheel.get_position()
 @onready var phone_label = $TextController/Container/HisMsg
@@ -38,7 +40,19 @@ func _process(delta: float) -> void:
 		timer_bar.value = 100-(time_diff*33.334)
 		
 	health.text = "X " + str(Global.health) 
+	$Finger.position = get_viewport().get_mouse_position()
+	if $Finger.visible && (Engine.get_frames_drawn()%3) == 0 :
+		finger.emit()
 	pass
+	
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("action"):
+		$Wheel/Hand_R.visible = false
+		$Finger.visible = true
+	elif event.is_action_released("action"):
+		$Wheel/Hand_R.visible = true
+		$Finger.visible = false
+		pass
 
 func take_hit():
 	$HitMask.set_color(Color(1,0,0,0.4))
