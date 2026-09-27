@@ -7,9 +7,9 @@ var hitsounds = []
 var no_repeat
 	
 @onready var og_wheel_pos = $Wheel.get_position()
-@onready var phone_label = $TextController/HisMsg
-@onready var b1 = $TextController/Button1
-@onready var b2 = $TextController/Button2
+@onready var phone_label = $TextController/Container/HisMsg
+@onready var b1 = $TextController/Button1/Label
+@onready var b2 = $TextController/Button2/Label
 @onready var timer_bar = $TextController/Timer_UI
 
 var texts = [

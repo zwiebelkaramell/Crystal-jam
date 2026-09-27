@@ -9,7 +9,29 @@
 [ext_resource type="Texture2D" uid="uid://cxp1uuqioy2td" path="res://Assets/Art/coins.png" id="6_waa4j"]
 [ext_resource type="Texture2D" uid="uid://b3g4otv06ekn3" path="res://Assets/Art/timcup.png" id="7_ok7cu"]
 [ext_resource type="Environment" uid="uid://q3j3t2wstnnv" path="res://fog.tres" id="7_y4yjw"]
+[ext_resource type="Texture2D" uid="uid://bgp04g4psm3pt" path="res://Assets/Art/fixed phone.png" id="9_n5rqp"]
+[ext_resource type="Texture2D" uid="uid://dmripd64x3h8j" path="res://Assets/Art/phone stand.png" id="10_gs482"]
 [ext_resource type="Script" uid="uid://mfpnll558sbo" path="res://audio.gd" id="10_irxef"]
+[ext_resource type="Texture2D" uid="uid://gnrwx5xx7wfp" path="res://Assets/Art/unpressedbutton.png" id="12_cxd00"]
+[ext_resource type="Texture2D" uid="uid://redi43uruivw" path="res://Assets/Art/pressedbutton.png" id="13_etlur"]
+
+[sub_resource type="SystemFont" id="SystemFont_gs482"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_n5rqp"]
+font = SubResource("SystemFont_gs482")
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_etlur"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_cxd00"]
+font = SubResource("SystemFont_etlur")
+font_size = 12
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ivpqx"]
+font = SubResource("SystemFont_etlur")
+font_size = 12
+font_color = Color(0, 0, 0, 1)
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=735735038]
 script = ExtResource("1_fyqef")
@@ -59,6 +81,20 @@ texture = ExtResource("6_waa4j")
 centered = false
 
 [node name="Phone" type="Sprite2D" parent="." unique_id=1178825924]
+position = Vector2(470, 319)
+texture = ExtResource("9_n5rqp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Phone" unique_id=1224022365]
+z_index = -1
+position = Vector2(-5, 1)
+texture = ExtResource("10_gs482")
+
+[node name="ColorRect" type="ColorRect" parent="Phone" unique_id=550522432]
+z_index = -1
+offset_left = 411.0
+offset_top = -55.0
+offset_right = 565.0
+offset_bottom = 211.0
 
 [node name="ViewPort" type="SubViewportContainer" parent="." unique_id=609984969]
 z_index = -10
@@ -94,35 +130,66 @@ offset_top = 380.0
 offset_right = 1127.0
 offset_bottom = 492.0
 
-[node name="Button1" type="Button" parent="TextController" unique_id=27704443]
+[node name="Container" type="MarginContainer" parent="TextController" unique_id=189394003]
+custom_maximum_size = Vector2(140, -1)
 layout_mode = 0
-offset_left = -50.0
-offset_top = 10.0
-offset_right = 86.0
-offset_bottom = 146.0
+offset_left = 77.0
+offset_top = -101.0
+offset_right = 214.0
+offset_bottom = 4.0
+theme_override_constants/margin_right = 0
 
-[node name="Button2" type="Button" parent="TextController" unique_id=766750568]
-layout_mode = 0
-offset_left = 98.0
-offset_top = 10.0
-offset_right = 234.0
-offset_bottom = 146.0
+[node name="HisMsg" type="Label" parent="TextController/Container" unique_id=1518862710]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_n5rqp")
+autowrap_mode = 2
 
-[node name="HisMsg" type="Label" parent="TextController" unique_id=1518862710]
+[node name="Button1" type="TextureButton" parent="TextController" unique_id=635443468]
 layout_mode = 0
-offset_left = 71.0
-offset_top = -29.0
-offset_right = 111.0
-offset_bottom = -6.0
+offset_left = 74.0
+offset_top = 10.0
+offset_right = 206.0
+offset_bottom = 62.0
+texture_normal = ExtResource("12_cxd00")
+texture_pressed = ExtResource("13_etlur")
+
+[node name="Label" type="Label" parent="TextController/Button1" unique_id=128381500]
+custom_maximum_size = Vector2(120, -1)
+layout_mode = 0
+offset_left = 11.0
+offset_top = 8.0
+offset_right = 51.0
+offset_bottom = 31.0
+label_settings = SubResource("LabelSettings_cxd00")
+autowrap_mode = 2
+
+[node name="Button2" type="TextureButton" parent="TextController" unique_id=765494337]
+layout_mode = 0
+offset_left = 74.0
+offset_top = 76.0
+offset_right = 206.0
+offset_bottom = 128.0
+texture_normal = ExtResource("12_cxd00")
+texture_pressed = ExtResource("13_etlur")
+
+[node name="Label" type="Label" parent="TextController/Button2" unique_id=64067971]
+custom_maximum_size = Vector2(120, -1)
+layout_mode = 0
+offset_left = 11.0
+offset_top = 8.0
+offset_right = 51.0
+offset_bottom = 31.0
+label_settings = SubResource("LabelSettings_ivpqx")
+autowrap_mode = 2
 
 [node name="Timer_UI" type="ProgressBar" parent="TextController" unique_id=1838009822]
 visible = false
 self_modulate = Color(0, 1, 0, 1)
 layout_mode = 0
-offset_left = -6.0
-offset_top = -8.0
-offset_right = 201.0
-offset_bottom = 2.0
+offset_left = 70.0
+offset_top = -4.0
+offset_right = 210.0
+offset_bottom = 6.0
 show_percentage = false
 
 [node name="Audio" type="AudioStreamPlayer" parent="." unique_id=1455483512]
