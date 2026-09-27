@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cjdwd8wubg8yq"
-path="res://.godot/imported/phone.png-73164e349e6f1162d41975a29c4be31f.ctex"
+uid="uid://2hriai6mla7d"
+path="res://.godot/imported/middlefinger.png-974cd1e9b685a0714edaa5a31b8d21fa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/phone.png"
-dest_files=["res://.godot/imported/phone.png-73164e349e6f1162d41975a29c4be31f.ctex"]
+source_file="res://Assets/Art/middlefinger.png"
+dest_files=["res://.godot/imported/middlefinger.png-974cd1e9b685a0714edaa5a31b8d21fa.ctex"]
 
 [params]
 
