@@ -60,14 +60,15 @@ func do_text():
 	pass
 	
 func fail():
-	phone_label.text = ">:("
+	var m = [">:(", ";c", ",':[", ":/", "OnO", "[-_-*]"]
+	phone_label.text = m[randi_range(0, (m.size()-1))]
 	b1.text = ""
 	b2.text = ""
 	take_hit()
 	timer_bar.visible = false
 	pass
 func no_fail():
-	var t = [":)",";P",":3","<:o)","^_^"]
+	var t = [":)",";P",":3","<:o)","^_^", ":D"]
 	phone_label.text = t[randi_range(0, (t.size()-1))]
 	b1.text = ""
 	b2.text = ""
