@@ -3,15 +3,14 @@
 [ext_resource type="Texture2D" uid="uid://ctmwic2umwmb5" path="res://Assets/Art/grass.png" id="1_kl2qe"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_dbps7"]
-size = Vector2(200, 6)
+size = Vector2(200, 1000)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1v7et"]
 shading_mode = 0
 albedo_texture = ExtResource("1_kl2qe")
 albedo_texture_force_srgb = true
-uv1_scale = Vector3(4.93, 4.93, 4.93)
+uv1_scale = Vector3(0.165, 0.165, 0.165)
 uv1_triplanar = true
-fixed_size = true
 
 [node name="Asphalt" type="MeshInstance3D" unique_id=1182394214]
 gi_lightmap_texel_scale = 10.0

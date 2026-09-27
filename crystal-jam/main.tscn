@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://csdvrd6mode6r" path="res://main.gd" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://d0qvop6te4jsu" path="res://asphalt.tscn" id="2_h2yge"]
 [ext_resource type="Script" uid="uid://cqfmhtqn20hx" path="res://player.gd" id="3_1bvp3"]
-[ext_resource type="PackedScene" uid="uid://dkhjg36yspx38" path="res://grass.tscn" id="3_efxa6"]
 [ext_resource type="PackedScene" uid="uid://bxink627li2bk" path="res://ui.tscn" id="4_1bvp3"]
 [ext_resource type="Environment" uid="uid://q3j3t2wstnnv" path="res://fog.tres" id="4_lquwl"]
 [ext_resource type="Script" uid="uid://bfoojv5g2qpye" path="res://baddie.gd" id="6_272bh"]
@@ -61,9 +60,6 @@ script = ExtResource("1_ig7tw")
 
 [node name="Asphalt2" parent="Road/Asphalt" unique_id=38993766 instance=ExtResource("2_h2yge")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200, 0, 0)
-
-[node name="Asphalt3" parent="Road/Asphalt" unique_id=72931524 instance=ExtResource("3_efxa6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0072045326, 0)
 
 [node name="Crystals" type="Node3D" parent="Road" unique_id=980539160]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.86, 0)

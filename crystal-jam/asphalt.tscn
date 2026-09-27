@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://d0qvop6te4jsu"]
 
 [ext_resource type="Texture2D" uid="uid://d1x3s4ola23gv" path="res://Assets/Art/12924zi1a.png" id="1_wxhju"]
+[ext_resource type="PackedScene" uid="uid://dkhjg36yspx38" path="res://grass.tscn" id="2_xedat"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_dbps7"]
 size = Vector2(200, 6)
@@ -36,3 +37,6 @@ uv1_scale = Vector3(32.06, 1, 1)
 gi_lightmap_texel_scale = 10.0
 mesh = SubResource("PlaneMesh_dbps7")
 surface_material_override/0 = SubResource("StandardMaterial3D_dbps7")
+
+[node name="Grass" parent="." unique_id=1598335197 instance=ExtResource("2_xedat")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)

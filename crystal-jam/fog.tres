@@ -2,4 +2,4 @@
 
 [resource]
 fog_enabled = true
-fog_density = 0.0272
+fog_depth_curve = 0.5358866
