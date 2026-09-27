@@ -32,6 +32,10 @@ func _process(delta: float) -> void:
 		timer_bar.value = 100-(time_diff*33.334)
 	pass
 
+func take_hit():
+	$HitMask.set_color(Color(1,0,0,0.4))
+	Global.health -= 1
+
 func do_text():
 	order = randi_range(0,1)
 	var selection = (randi_range(0,(texts.size()-1)))
@@ -45,7 +49,7 @@ func fail():
 	phone_label.text = ">:("
 	b1.text = ""
 	b2.text = ""
-	Global.health -= 1
+	take_hit()
 	timer_bar.visible = false
 	pass
 func no_fail():
@@ -53,7 +57,7 @@ func no_fail():
 	phone_label.text = t[randi_range(0, (t.size()-1))]
 	b1.text = ""
 	b2.text = ""
-	Global.health += 1
+	take_hit()
 	timer_bar.visible = false
 	pass
 

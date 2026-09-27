@@ -5,14 +5,49 @@
 [ext_resource type="Script" uid="uid://cqfmhtqn20hx" path="res://player.gd" id="3_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://bxink627li2bk" path="res://ui.tscn" id="4_1bvp3"]
 [ext_resource type="Environment" uid="uid://q3j3t2wstnnv" path="res://fog.tres" id="4_lquwl"]
-[ext_resource type="Texture2D" uid="uid://dscxcrdp0cf43" path="res://Assets/Art/him.png" id="6_7mycd"]
 [ext_resource type="Script" uid="uid://bfoojv5g2qpye" path="res://baddie.gd" id="6_272bh"]
+[ext_resource type="Texture2D" uid="uid://bdh4u7l75jea" path="res://Assets/Art/boogerbeanframe1.png" id="7_4c57u"]
+[ext_resource type="Texture2D" uid="uid://c71lrf4o54y7w" path="res://Assets/Art/boogerbeanstand.png" id="8_efxa6"]
+[ext_resource type="Texture2D" uid="uid://bnc0goa0mh4rh" path="res://Assets/Art/boogerbean2.png" id="9_dg77c"]
+[ext_resource type="Texture2D" uid="uid://bw6xycfl7icap" path="res://Assets/Art/boogerbean3closedeye.png" id="10_ycdy4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_c0ktc"]
 size = Vector3(0.5966797, 1.3320313, 0.6534424)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_c0ktc"]
 radius = 0.14697266
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c0ktc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_4c57u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_efxa6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_dg77c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_efxa6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_4c57u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_efxa6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ycdy4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_efxa6")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Main" type="Node3D" unique_id=467007417]
 script = ExtResource("1_ig7tw")
@@ -53,9 +88,12 @@ script = ExtResource("6_272bh")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Baddie/Area3D" unique_id=2028641804]
 shape = SubResource("CapsuleShape3D_c0ktc")
 
-[node name="Sprite3D" type="Sprite3D" parent="Baddie" unique_id=631972964]
+[node name="Sprite3D" type="AnimatedSprite3D" parent="Baddie" unique_id=528500705]
+transform = Transform3D(0.36, 0, 0, 0, 0.36, 0, 0, 0, 0.36, 0, 0.19445658, 0)
 billboard = 1
-texture = ExtResource("6_7mycd")
+sprite_frames = SubResource("SpriteFrames_c0ktc")
+frame = 6
+frame_progress = 0.72225356
 
 [node name="Timers" type="Node" parent="." unique_id=739646968]
 

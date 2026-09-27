@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnc0goa0mh4rh"
-path.s3tc="res://.godot/imported/boogerbean2.png-74043b160977c18b93bfac92b8e87924.s3tc.ctex"
+uid="uid://c71lrf4o54y7w"
+path.s3tc="res://.godot/imported/boogerbeanstand.png-61a9fc09c064c97dc9c8341df1a7d19d.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/Art/boogerbean2.png"
-dest_files=["res://.godot/imported/boogerbean2.png-74043b160977c18b93bfac92b8e87924.s3tc.ctex"]
+source_file="res://Assets/Art/boogerbeanstand.png"
+dest_files=["res://.godot/imported/boogerbeanstand.png-61a9fc09c064c97dc9c8341df1a7d19d.s3tc.ctex"]
 
 [params]
 

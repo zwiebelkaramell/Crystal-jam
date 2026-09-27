@@ -21,6 +21,8 @@ func _ready() -> void:
 	og.set(baddie.get_name(), baddie.get_position())
 	
 	$Timers/TextFreq.start(5)
+	
+	$Baddie/Sprite3D.play()
 
 func _process(delta: float) -> void:
 	
