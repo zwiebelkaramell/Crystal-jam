@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnc0goa0mh4rh"
-path.s3tc="res://.godot/imported/boogerbean2.png-74043b160977c18b93bfac92b8e87924.s3tc.ctex"
+uid="uid://bw6xycfl7icap"
+path.s3tc="res://.godot/imported/boogerbean3closedeye.png-5251723f2b23d2712295c749957047ed.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/Art/boogerbean2.png"
-dest_files=["res://.godot/imported/boogerbean2.png-74043b160977c18b93bfac92b8e87924.s3tc.ctex"]
+source_file="res://Assets/Art/boogerbean3closedeye.png"
+dest_files=["res://.godot/imported/boogerbean3closedeye.png-5251723f2b23d2712295c749957047ed.s3tc.ctex"]
 
 [params]
 
