@@ -1,14 +1,38 @@
 [gd_scene format=3 uid="uid://d0qvop6te4jsu"]
 
-[ext_resource type="Texture2D" uid="uid://bm00emjrjk2ti" path="res://Assets/Art/body.png" id="1_wxhju"]
+[ext_resource type="Texture2D" uid="uid://d1x3s4ola23gv" path="res://Assets/Art/12924zi1a.png" id="1_wxhju"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_dbps7"]
 size = Vector2(200, 6)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c0ktc"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_xedat"]
+noise_type = 0
+frequency = 0.0884
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_wxhju"]
+generate_mipmaps = false
+noise = SubResource("FastNoiseLite_xedat")
+invert = true
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_iekrg"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_c7nqt"]
+noise = SubResource("FastNoiseLite_iekrg")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dbps7"]
+disable_ambient_light = true
+disable_fog = true
 albedo_texture = ExtResource("1_wxhju")
-uv1_scale = Vector3(30, 2, 2)
+emission_enabled = true
+emission_energy_multiplier = 0.01
+emission_texture = SubResource("NoiseTexture2D_wxhju")
+heightmap_texture = SubResource("NoiseTexture2D_c7nqt")
+heightmap_flip_texture = true
+backlight = Color(1, 1, 1, 1)
+detail_albedo = ExtResource("1_wxhju")
+uv1_scale = Vector3(32.06, 1, 1)
 
 [node name="Asphalt" type="MeshInstance3D" unique_id=1182394214]
+gi_lightmap_texel_scale = 10.0
 mesh = SubResource("PlaneMesh_dbps7")
-surface_material_override/0 = SubResource("StandardMaterial3D_c0ktc")
+surface_material_override/0 = SubResource("StandardMaterial3D_dbps7")

@@ -69,7 +69,6 @@ func no_fail():
 	phone_label.text = t[randi_range(0, (t.size()-1))]
 	b1.text = ""
 	b2.text = ""
-	take_hit()
 	timer_bar.visible = false
 	pass
 

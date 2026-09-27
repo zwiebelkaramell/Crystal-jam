@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2qwr48d8hiqe"
-path.s3tc="res://.godot/imported/crystal1.png-6a08eb3c9d872c900e79833c37c31fb3.s3tc.ctex"
+uid="uid://xhb1vujcfisi"
+path.s3tc="res://.godot/imported/mask.png-5e0d7299d567f39d9424e88adbf03e51.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/Art/crystal1.png"
-dest_files=["res://.godot/imported/crystal1.png-6a08eb3c9d872c900e79833c37c31fb3.s3tc.ctex"]
+source_file="res://Assets/Art/mask.png"
+dest_files=["res://.godot/imported/mask.png-5e0d7299d567f39d9424e88adbf03e51.s3tc.ctex"]
 
 [params]
 
