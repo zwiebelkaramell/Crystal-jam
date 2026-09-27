@@ -19,6 +19,8 @@ func _ready() -> void:
 	for n in $UI.get_children():
 		og.set(n.get_name(), n.get_position())
 	og.set(baddie.get_name(), baddie.get_position())
+	
+	$Timers/TextFreq.start(5)
 
 func _process(delta: float) -> void:
 	
@@ -85,7 +87,7 @@ func do_monster():
 	baddie.set_position(Vector3(
 	move_toward(baddie_pos.x, player_pos.x, 0.01),
 	og["Baddie"].y,
-	move_toward(baddie_pos.z, player_pos.z, 0.01)
+	move_toward(baddie_pos.z, player_pos.z, (0.1*ease(abs((player_pos.z-baddie_pos.z)/6), 0.5)))
 	))
 	############
 	
@@ -153,15 +155,15 @@ func _on_player_hit(area: Area3D) -> void:
 	match object.type:
 		"left":
 			Global.health += 1
-			mon_knockback += 20
+			mon_knockback += 25
 			object.queue_free()
 		"right":
 			Global.health += 1
-			mon_knockback += 20
+			mon_knockback += 25
 			object.queue_free()
 		"rainbow":
 			Global.health += 1
-			mon_knockback += 20
+			mon_knockback += 25
 			object.queue_free()
 		"baddie":
 			mon_knockback += 30
@@ -188,4 +190,12 @@ func _on_player_right() -> void:
 	rearview.set_rotation(Vector3(0,90,(move_toward(rearview.get_rotation().z, 0.5, 0.02))))
 	tims.set_rotation(move_toward(tims.get_rotation(), 0.1, 0.3))
 	coin_velocity += Vector2(10, (randf_range(-0.005, 0.005)+randf_range(-0.005, 0.005)))
+	pass
+
+
+func _on_text_freq_timeout(timer: Timer) -> void:
+	timer.start(5+(randf_range(-1,1)))
+	$UI.do_text()
+	$Timers/ResponseTime.start(3)
+	
 	pass
