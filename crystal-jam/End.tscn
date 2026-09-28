@@ -1,42 +1,50 @@
 [gd_scene format=3 uid="uid://cxagtksksdkeg"]
 
 [ext_resource type="Script" uid="uid://cu3wlcvilodr1" path="res://end.gd" id="1_lm0ep"]
+[ext_resource type="Texture2D" uid="uid://cnn0uhtl8kaeg" path="res://Assets/Art/deathscreen.png" id="2_ede3x"]
+[ext_resource type="Texture2D" uid="uid://csqj1do0m8t5x" path="res://Assets/Art/try again.png" id="3_7wqwc"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_c0ktc"]
-font_size = 103
-font_color = Color(1, 0, 0, 1)
-outline_size = 8
-outline_color = Color(0, 0, 0, 1)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1v7et"]
 
-[node name="Control" type="Node" unique_id=538861193]
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_h38u1"]
+
+[node name="Control" type="Control" unique_id=1050997784]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_lm0ep")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=932207752]
+layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(1, 0.5372549, 1, 1)
 
 [node name="Node" type="Control" parent="." unique_id=184145281]
-layout_mode = 3
 anchors_preset = 0
 
-[node name="Label" type="Label" parent="Node" unique_id=2099862885]
-z_index = 1
+[node name="TextureRect" type="TextureRect" parent="." unique_id=698309117]
+material = SubResource("ShaderMaterial_1v7et")
 layout_mode = 0
-offset_left = 295.0
-offset_top = 115.0
-offset_right = 892.0
-offset_bottom = 257.0
-text = "UR DED LOL"
-label_settings = SubResource("LabelSettings_c0ktc")
+offset_left = -3.0
+offset_right = 1149.0
+offset_bottom = 648.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_ede3x")
 
-[node name="Button" type="Button" parent="Node" unique_id=1648215926]
-z_index = 10
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=533933410]
+material = SubResource("CanvasItemMaterial_h38u1")
 layout_mode = 0
-offset_left = 422.0
-offset_top = 451.0
-offset_right = 730.0
-offset_bottom = 559.0
-text = "Try Again?"
+offset_left = 12.0
+offset_top = 3.0
+offset_right = 1164.0
+offset_bottom = 651.0
+texture = ExtResource("3_7wqwc")
 
-[connection signal="pressed" from="Node/Button" to="." method="_on_button_pressed"]
+[node name="Button" type="Button" parent="." unique_id=1011285523]
+layout_mode = 0
+offset_top = 396.0
+offset_right = 1148.0
+offset_bottom = 649.0
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
