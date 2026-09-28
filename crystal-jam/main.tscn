@@ -126,7 +126,7 @@ stream = ExtResource("14_w48qg")
 
 [node name="Radio" type="AudioStreamPlayer" parent="SFX" unique_id=797737319]
 stream = ExtResource("15_vivmo")
-volume_db = -30.09
+volume_db = -25.0
 
 [connection signal="left" from="Player" to="." method="_on_player_left"]
 [connection signal="right" from="Player" to="." method="_on_player_right"]
