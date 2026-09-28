@@ -1,6 +1,7 @@
 extends Node
 
 func _ready() -> void:
+	$Node.modulate = Color(1,1,1,0)
 	pass
 	
 func _process(delta: float) -> void:
