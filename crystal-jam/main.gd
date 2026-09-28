@@ -91,7 +91,7 @@ func do_trees():
 		tree.is_tree()
 		tree.position.x = (-rel_pos.x) + randf_range(spawn_dist, spawn_dist+(Global.road_l*4))
 		tree.position.y += 1
-		if parent.get_children().size() % 2 == 0:
+		if randi_range(0,1):
 			tree.position.z = (-rel_pos.z) + randf_range((-Global.road_w/2), (-Global.road_w*2))
 		else:
 			tree.position.z = (-rel_pos.z) + randf_range((Global.road_w/2), (Global.road_w*2))

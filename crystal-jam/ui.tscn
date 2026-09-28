@@ -263,11 +263,12 @@ text = "X 3"
 label_settings = SubResource("LabelSettings_c0ktc")
 
 [node name="Cat" type="Sprite2D" parent="." unique_id=1499564194]
+z_index = 1
 position = Vector2(66, 713)
 texture = ExtResource("20_vkygq")
 
 [node name="Timer" type="Timer" parent="Cat" unique_id=727719706]
-wait_time = 30.0
+wait_time = 38.232
 
 [connection signal="timeout" from="Warning/Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="TextController/Button1" to="." method="_on_button_1_pressed"]
