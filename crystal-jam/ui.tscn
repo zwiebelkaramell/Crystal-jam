@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://gnrwx5xx7wfp" path="res://Assets/Art/unpressedbutton.png" id="12_cxd00"]
 [ext_resource type="Texture2D" uid="uid://redi43uruivw" path="res://Assets/Art/pressedbutton.png" id="13_etlur"]
 [ext_resource type="Texture2D" uid="uid://dlne6iqm5vns" path="res://Assets/Art/crystal3.png" id="15_etlur"]
+[ext_resource type="Texture2D" uid="uid://ds8p8g5p1i76v" path="res://Assets/Art/CAT.png" id="20_vkygq"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_c0ktc"]
 animations = [{
@@ -261,6 +262,14 @@ offset_bottom = 169.49792
 text = "X 3"
 label_settings = SubResource("LabelSettings_c0ktc")
 
+[node name="Cat" type="Sprite2D" parent="." unique_id=1499564194]
+position = Vector2(66, 713)
+texture = ExtResource("20_vkygq")
+
+[node name="Timer" type="Timer" parent="Cat" unique_id=727719706]
+wait_time = 30.0
+
 [connection signal="timeout" from="Warning/Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="TextController/Button1" to="." method="_on_button_1_pressed"]
 [connection signal="pressed" from="TextController/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="timeout" from="Cat/Timer" to="." method="_on_cat_timer_timeout"]

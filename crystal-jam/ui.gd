@@ -5,6 +5,7 @@ var order
 var answered
 var hitsounds = []
 var no_repeat
+var is_cat = false
 
 signal finger()
 	
@@ -16,6 +17,7 @@ signal finger()
 @onready var health = $"Health Label"
 @onready var merc_timer = $Warning/Timer
 @onready var sfx_crystal = load("res://Assets/Audio/crystal_get.ogg")
+@onready var og_cat_pos = $Cat.get_position()
 
 var texts = [
 # question, good response, bad response
@@ -40,6 +42,7 @@ func _ready() -> void:
 	merc_timer.start(3)
 	$Audio.set_stream(load("res://Assets/Audio/warning.ogg"))
 	$Audio.play()
+	$Cat/Timer.start()
 	pass
 
 func _process(delta: float) -> void:
@@ -52,6 +55,9 @@ func _process(delta: float) -> void:
 	$Finger.position = get_viewport().get_mouse_position()
 	if $Finger.visible && (Engine.get_frames_drawn()%3) == 0 :
 		finger.emit()
+	
+	if is_cat:
+		do_cat()
 	pass
 	
 func _input(event: InputEvent) -> void:
@@ -67,6 +73,12 @@ func sfx(name: String):
 	var sound = load("res://Assets/Audio/%s" % name)
 	$Audio.set_stream(sound)
 	$Audio.play()
+
+func do_cat():
+	$Cat.position = Vector2(
+		move_toward($Cat.get_position().x, 2000, 1),
+		og_cat_pos.y+sin(Engine.get_frames_drawn()/4)
+	)
 
 func take_hit():
 	$HitMask.set_color(Color(1,0,0,0.4))
@@ -138,4 +150,10 @@ func _on_button_2_pressed() -> void:
 
 func _on_timer_timeout() -> void:
 	$Warning.visible = false
+	pass
+
+
+func _on_cat_timer_timeout() -> void:
+	$Cat.position = og_cat_pos
+	is_cat = true
 	pass
