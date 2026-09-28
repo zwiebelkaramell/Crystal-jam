@@ -25,6 +25,7 @@ func _ready() -> void:
 	
 	$Baddie/Sprite3D.play()
 	$SFX/Car.play()
+	$SFX/Radio.play()
 
 func _process(delta: float) -> void:
 	
