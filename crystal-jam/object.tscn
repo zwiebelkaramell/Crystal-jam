@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dlne6iqm5vns" path="res://Assets/Art/crystal3.png" id="2_3xuqs"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_c0ktc"]
+height = 3.6308594
 
 [node name="Object" type="Node3D" unique_id=833870564]
 script = ExtResource("1_3xuqs")
@@ -12,6 +13,7 @@ script = ExtResource("1_3xuqs")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1764466415]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.8154296, 0)
 shape = SubResource("CapsuleShape3D_c0ktc")
 
 [node name="sprite" type="Sprite3D" parent="." unique_id=779077756]

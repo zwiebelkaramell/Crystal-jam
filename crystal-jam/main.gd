@@ -86,7 +86,7 @@ func do_trees():
 		if n.global_position.x <= -Global.road_l:
 			n.queue_free()
 	
-	if parent.get_children().size() < 20:
+	if parent.get_children().size() < 40:
 		var tree = object_scene.instantiate()
 		tree.is_tree()
 		tree.position.x = (-rel_pos.x) + randf_range(spawn_dist, spawn_dist+(Global.road_l*4))
@@ -210,6 +210,8 @@ func _on_player_hit(area: Area3D) -> void:
 		"baddie":
 			mon_knockback += 30
 			$UI.take_hit()
+		"grass":
+			object.queue_free()
 		_:
 			object.queue_free()
 			$UI.take_hit()

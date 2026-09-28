@@ -5,6 +5,7 @@ var rainbow_tex = load("res://Assets/Art/crystal3.png")
 var tree1_tex = load("res://Assets/Art/tree1.png")
 var tree2_tex = load("res://Assets/Art/TREE2.png")
 var tree3_tex = load("res://Assets/Art/TREE3.png")
+var grass_tex = load("res://Assets/Art/blade of grass.png")
 
 var types = ["left", "right", "rainbow", "tree1", "tree2", "tree3"]
 @export var type: String
@@ -37,6 +38,8 @@ func _ready() -> void:
 			$sprite.set_texture(tree2_tex)
 		"tree3":
 			$sprite.set_texture(tree3_tex)
+		"grass":
+			$sprite.set_texture(grass_tex)
 
 
 
@@ -44,7 +47,12 @@ func is_crystal():
 	self.type = types[randi_range(0, 2)]
 	
 func is_tree():
-	self.type = types[randi_range(3,5)]
+	if randi_range(0,1):
+		self.type = types[randi_range(3,5)]
+		self.scale *= 4
+		self.position.y += 3.7
+	else:
+		self.type = "grass"
 
 func do_rainbow(sprite: Node):
 	var frequency = .05
