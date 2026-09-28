@@ -10,13 +10,14 @@ var types = ["left", "right", "rainbow", "tree1", "tree2", "tree3"]
 @export var type: String
 
 @onready var og = self.get_position()
+@onready var spawn_time = Engine.get_frames_drawn()
 
 func _process(delta: float) -> void:
 	if type == "rainbow":
 		do_rainbow($sprite)
 	self.set_position(Vector3(
 		self.get_position().x,
-		(og.y + ((0.5*sin(Engine.get_frames_drawn()/8.0))*0.5)),
+		(og.y + ((0.5*sin((Engine.get_frames_drawn()-spawn_time)/8.0))*0.5)),
 		self.get_position().z
 	))
 
