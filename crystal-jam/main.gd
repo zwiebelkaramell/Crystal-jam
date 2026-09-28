@@ -24,6 +24,7 @@ func _ready() -> void:
 	$Timers/TextFreq.start(5)
 	
 	$Baddie/Sprite3D.play()
+	$SFX/Car.play()
 
 func _process(delta: float) -> void:
 	
