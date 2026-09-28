@@ -123,7 +123,7 @@ func do_monster():
 	var baddie_pos = baddie.get_position()
 	
 	baddie.set_position(Vector3(
-	move_toward(baddie_pos.x, player_pos.x, 0.01),
+	move_toward(baddie_pos.x, player_pos.x, 0.012),
 	og["Baddie"].y,
 	move_toward(baddie_pos.z, player_pos.z, (0.1*ease(abs((player_pos.z-baddie_pos.z)/6), 0.5)))
 	))
@@ -241,6 +241,7 @@ func _on_player_right() -> void:
 func _on_text_freq_timeout(timer: Timer) -> void:
 	timer.start(5+(randf_range(-1,1)))
 	$UI.do_text()
+	$SFX/Notification.play()
 	$Timers/ResponseTime.start(3)
 	
 	pass

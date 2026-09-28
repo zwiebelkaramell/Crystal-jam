@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://b4a34tdiqrxxm" path="res://sfx.gd" id="11_dg77c"]
 [ext_resource type="AudioStream" uid="uid://b06nmka0ib1rb" path="res://Assets/Audio/car skiii.ogg" id="12_ycdy4"]
 [ext_resource type="AudioStream" uid="uid://d2ei2gf67a0v1" path="res://Assets/Audio/car.ogg" id="13_ycdy4"]
+[ext_resource type="AudioStream" uid="uid://brdlw7lgphvch" path="res://Assets/Audio/notification.ogg" id="14_w48qg"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_c0ktc"]
 size = Vector3(0.5966797, 1.3320313, 0.6534424)
@@ -118,6 +119,9 @@ max_polyphony = 8
 [node name="Car" type="AudioStreamPlayer" parent="SFX" unique_id=1761651119]
 stream = ExtResource("13_ycdy4")
 volume_db = -14.596
+
+[node name="Notification" type="AudioStreamPlayer" parent="SFX" unique_id=1784645007]
+stream = ExtResource("14_w48qg")
 
 [connection signal="left" from="Player" to="." method="_on_player_left"]
 [connection signal="right" from="Player" to="." method="_on_player_right"]
