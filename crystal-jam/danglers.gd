@@ -29,10 +29,10 @@ func dangle(obj: RigidBody2D, len: int, anchor: Vector2, elasticity: float, delt
 	var limit = (pos-anchor).limit_length(len)
 	
 	if abs(pos.x) > abs(limit.x) || abs(pos.y) > abs(limit.y):
-		obj.apply_force(elasticity*-((pos-anchor)-limit))
+		obj.apply_force(elasticity*-((pos-anchor)-limit), Vector2(0, -1))
 	
-	obj.apply_torque(-(10000*(move_toward(obj.get_rotation(), 0, ease(ease(obj.get_rotation(), 0.2), 0.2)))))
-
+	#obj.apply_torque(-(1000*(lerp_angle(obj.get_rotation(), 0, ease(obj.get_rotation()/PI, 0.2)))))
+	
 	pass
 	
 func force(vec: Vector2):
