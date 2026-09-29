@@ -20,6 +20,10 @@
 [ext_resource type="Texture2D" uid="uid://redi43uruivw" path="res://Assets/Art/pressedbutton.png" id="13_etlur"]
 [ext_resource type="Texture2D" uid="uid://dlne6iqm5vns" path="res://Assets/Art/crystal3.png" id="15_etlur"]
 [ext_resource type="Texture2D" uid="uid://ds8p8g5p1i76v" path="res://Assets/Art/CAT.png" id="20_vkygq"]
+[ext_resource type="Script" uid="uid://dhojafud6q444" path="res://danglers.gd" id="21_x2s2p"]
+[ext_resource type="Texture2D" uid="uid://dy6yb2mht7elk" path="res://Assets/Art/dangle1.png" id="22_v8jk5"]
+[ext_resource type="Texture2D" uid="uid://en8xv88s5c0x" path="res://Assets/Art/DANGLE2.png" id="23_cka8k"]
+[ext_resource type="Texture2D" uid="uid://djt8tao6ajmx1" path="res://Assets/Art/mirrordangle1.png" id="24_v8jk5"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_c0ktc"]
 animations = [{
@@ -61,10 +65,24 @@ font_color = Color(0, 0, 0, 1)
 outline_size = 5
 outline_color = Color(1, 0.29803923, 1, 1)
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7w61g"]
+friction = 0.0
+bounce = 100.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v8jk5"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_r2460"]
+friction = 0.0
+bounce = 100.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x2s2p"]
+size = Vector2(31, 45)
+
 [node name="CanvasLayer" type="CanvasLayer" unique_id=735735038]
 script = ExtResource("1_fyqef")
 
 [node name="Warning" type="AnimatedSprite2D" parent="." unique_id=1900092967]
+visible = false
 z_index = 4
 position = Vector2(577, 321)
 sprite_frames = SubResource("SpriteFrames_c0ktc")
@@ -103,6 +121,7 @@ texture = ExtResource("3_n5ude")
 centered = false
 
 [node name="Mirror" type="Sprite2D" parent="." unique_id=1604485367]
+z_index = 1
 position = Vector2(-36, 0)
 texture = ExtResource("4_n5ude")
 centered = false
@@ -148,7 +167,6 @@ offset_right = 565.0
 offset_bottom = 211.0
 
 [node name="ViewPort" type="SubViewportContainer" parent="." unique_id=609984969]
-z_index = -10
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -269,6 +287,53 @@ texture = ExtResource("20_vkygq")
 
 [node name="Timer" type="Timer" parent="Cat" unique_id=727719706]
 wait_time = 38.232
+
+[node name="Danglers" type="Node" parent="." unique_id=1210083540]
+script = ExtResource("21_x2s2p")
+
+[node name="Heart" type="RigidBody2D" parent="Danglers" unique_id=1490044565]
+z_index = -1
+position = Vector2(627, 213)
+physics_material_override = SubResource("PhysicsMaterial_7w61g")
+linear_damp_mode = 1
+linear_damp = 2.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Danglers/Heart" unique_id=1524821274]
+texture = ExtResource("22_v8jk5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Danglers/Heart" unique_id=334727660]
+position = Vector2(0, 5.2452087e-06)
+rotation = -0.25307274
+shape = SubResource("CapsuleShape2D_v8jk5")
+
+[node name="Dice" type="RigidBody2D" parent="Danglers" unique_id=1979221615]
+z_index = -1
+position = Vector2(552, 232)
+physics_material_override = SubResource("PhysicsMaterial_r2460")
+linear_damp_mode = 1
+linear_damp = 2.0
+
+[node name="RigidBody2D" type="Sprite2D" parent="Danglers/Dice" unique_id=719980681]
+texture = ExtResource("23_cka8k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Danglers/Dice" unique_id=128034549]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_x2s2p")
+
+[node name="Heartline" type="Line2D" parent="Danglers" unique_id=373875511]
+z_index = -2
+points = PackedVector2Array(0, 0, 0, 0)
+texture = ExtResource("24_v8jk5")
+texture_mode = 2
+
+[node name="Diceline" type="Line2D" parent="Danglers" unique_id=1926309148]
+z_index = -2
+points = PackedVector2Array(0, 0, 0, 0)
+texture = ExtResource("24_v8jk5")
+texture_mode = 2
+
+[node name="Anchor" type="Marker2D" parent="Danglers" unique_id=1878427864]
+position = Vector2(565, 84)
 
 [connection signal="timeout" from="Warning/Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="TextController/Button1" to="." method="_on_button_1_pressed"]

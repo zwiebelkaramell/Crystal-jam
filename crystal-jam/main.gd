@@ -192,6 +192,12 @@ func UI_gubbins(delta):
 	coin_velocity = Vector2(move_toward(coin_velocity.x, 0, 5), move_toward(coin_velocity.y, 0, 5))
 	#############################
 	
+	####### Mirror Danglers ######
+	
+	
+	
+	##############################
+	
 func _on_player_hit(area: Area3D) -> void:
 	var object = area.get_parent()
 	match object.type:
