@@ -327,18 +327,21 @@ shape = SubResource("RectangleShape2D_x2s2p")
 
 [node name="Heartline" type="Line2D" parent="Danglers" unique_id=373875511]
 z_index = -2
-points = PackedVector2Array(0, 0, 0, 0)
+points = PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 texture = ExtResource("24_v8jk5")
 texture_mode = 2
 
 [node name="Diceline" type="Line2D" parent="Danglers" unique_id=1926309148]
 z_index = -2
-points = PackedVector2Array(0, 0, 0, 0)
+points = PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 texture = ExtResource("24_v8jk5")
 texture_mode = 2
 
 [node name="Anchor" type="Marker2D" parent="Danglers" unique_id=1878427864]
 position = Vector2(565, 84)
+
+[node name="Bez Control Point" type="Marker2D" parent="Danglers" unique_id=1900502558]
+position = Vector2(566, 165)
 
 [connection signal="timeout" from="Warning/Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="TextController/Button1" to="." method="_on_button_1_pressed"]

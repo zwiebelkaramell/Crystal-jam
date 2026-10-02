@@ -6,6 +6,7 @@ extends Node
 @onready var dline = $Diceline
 @onready var hline = $Heartline
 @onready var mirror = $Anchor.get_position()
+@onready var control = $"Bez Control Point".get_position()
 
 var length = 150
 
@@ -21,8 +22,10 @@ func _process(delta: float) -> void:
 	#dice.apply_force((anchor + (dice.get_position()-anchor).limit_length(100)))
 	#heart.position = anchor + (heart.get_position()-anchor).limit_length(100)
 	
-	dline.set_point_position(dline.points.size()-1, dice.position)
-	hline.set_point_position(hline.points.size()-1, heart.position)
+	rope(hline, heart, control)
+	rope(dline, dice, control)
+	
+	
 	
 func dangle(obj: RigidBody2D, len: int, anchor: Vector2, elasticity: float, delta: float): # keeps an object dangling from the mirror
 	var pos = obj.get_position()
@@ -34,6 +37,28 @@ func dangle(obj: RigidBody2D, len: int, anchor: Vector2, elasticity: float, delt
 	#obj.apply_torque(-(1000*(lerp_angle(obj.get_rotation(), 0, ease(obj.get_rotation()/PI, 0.2)))))
 	
 	pass
+	
+func rope(line: Line2D, dangler: RigidBody2D, c_point: Vector2): #call every frame, makes the ropes move properly
+	#point attatched to the dice
+	line.set_point_position(line.points.size()-1, dangler.position)
+	
+	var seg_len = 1.0/line.points.size()
+	var end = line.points[line.points.size()-1]
+	
+	
+	#do the rest of the points
+	print("Break")
+	for n in range(1, line.points.size()-1):
+		var point = line.points[n]
+		var t = seg_len*n
+		
+		#make your own bezier function cuz godot's are confusing
+		var l0 = lerp(mirror, c_point, t)
+		var l1 = lerp(c_point, end, t)
+		var bez = lerp(l0, l1, t)
+
+
+		line.set_point_position(n, bez)
 	
 func force(vec: Vector2):
 	heart.apply_central_impulse(vec)

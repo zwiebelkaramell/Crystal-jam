@@ -5,6 +5,7 @@ var og = {}
 var reset_wheel: bool
 var coin_velocity: Vector2
 var mon_knockback = 0
+var mon_hit: bool
 
 @onready var cam = $Player/Camera3D
 @onready var tims = $UI/"Timmy's"
@@ -135,12 +136,16 @@ func do_monster():
 	
 	if mon_knockback > 0:
 		mon_knockback -= 1
+		if mon_hit:
+			baddie.get_child(1).modulate = Color(1, (sin(0.1*mon_knockback)+1)/2, (sin(0.1*mon_knockback)+1)/2, 1)
 		baddie.set_position(Vector3(
 			move_toward(baddie_pos.x, player_pos.x+1, -0.05),
 			og["Baddie"].y,
 			baddie_pos.z
 		))
-	
+	else:
+		mon_hit = false
+		baddie.get_child(1).modulate = Color(1, 1, 1, 1)
 	
 	pass
 	
@@ -203,15 +208,18 @@ func _on_player_hit(area: Area3D) -> void:
 	match object.type:
 		"left":
 			mon_knockback += 25
+			mon_hit = true
 			object.queue_free()
 			$UI.sfx("crystal_get.ogg")
 		"right":
 			mon_knockback += 25
+			mon_hit = true
 			object.queue_free()
 			$UI.sfx("crystal_get.ogg")
 		"rainbow":
 			Global.health += 1
 			mon_knockback += 25
+			mon_hit = true
 			object.queue_free()
 			$UI.sfx("crystal_get.ogg")
 		"baddie":
