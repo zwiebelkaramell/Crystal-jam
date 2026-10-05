@@ -15,7 +15,7 @@ var mon_hit: bool
 @onready var player = $Player
 
 func _ready() -> void:
-	
+	Engine.set_max_fps(60)
 	#assign og position values to all ui elements for jiggle purposes
 	for n in $UI.get_children():
 		if n.has_method("get_position"):

@@ -47,7 +47,6 @@ func rope(line: Line2D, dangler: RigidBody2D, c_point: Vector2): #call every fra
 	
 	
 	#do the rest of the points
-	print("Break")
 	for n in range(1, line.points.size()-1):
 		var point = line.points[n]
 		var t = seg_len*n
